@@ -1,0 +1,19 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.27/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CPack.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CPackComponent.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CTest.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CTestUseLaunchers.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CheckIncludeFiles.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CheckTypeSize.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake
+C:/Program Files/CMake/share/cmake-3.27/Templates/CPackConfig.cmake.in
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/ogg-src/CMakeLists.txt
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/ogg-src/cmake/CheckSizes.cmake
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/ogg-src/cmake/OggConfig.cmake.in
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/ogg-src/include/ogg/config_types.h.in
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/ogg-src/ogg.pc.in

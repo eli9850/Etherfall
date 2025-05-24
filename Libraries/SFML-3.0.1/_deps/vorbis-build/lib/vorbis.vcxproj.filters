@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\mdct.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\smallft.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\block.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\envelope.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lsp.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lpc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\analysis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\synthesis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\psy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\info.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\floor1.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\floor0.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\res0.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\mapping0.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\registry.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\codebook.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\sharedbook.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lookup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\bitrate.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\vorbisenc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\envelope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lpc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lsp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\codebook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\psy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\masking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\os.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\mdct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\smallft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\highlevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\registry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\scales.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lookup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lookup_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\codec_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\backends.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\bitrate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\win32\vorbis.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{4E747CF4-8EA7-346B-B0A3-9549D679E2E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AEDF1BA3-C65C-393B-9F67-8196D4D756A4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

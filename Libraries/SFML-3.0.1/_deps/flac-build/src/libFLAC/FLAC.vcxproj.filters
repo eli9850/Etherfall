@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\bitmath.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\bitreader.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\bitwriter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\cpu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\crc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\fixed.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\fixed_intrin_sse2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\fixed_intrin_ssse3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\fixed_intrin_sse42.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\fixed_intrin_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\float.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\format.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\lpc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\lpc_intrin_neon.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\lpc_intrin_sse2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\lpc_intrin_sse41.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\lpc_intrin_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\lpc_intrin_fma.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\md5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\memory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\metadata_iterators.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\metadata_object.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\stream_decoder.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\stream_encoder.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\stream_encoder_intrin_sse2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\stream_encoder_intrin_ssse3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\stream_encoder_intrin_avx2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\stream_encoder_framing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\share\win_utf8_io\win_utf8_io.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\ogg_decoder_aspect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\ogg_encoder_aspect.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\ogg_helper.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\ogg_mapping.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\include\share\win_utf8_io.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\flac-src\src\libFLAC\version.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{4E747CF4-8EA7-346B-B0A3-9549D679E2E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AEDF1BA3-C65C-393B-9F67-8196D4D756A4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

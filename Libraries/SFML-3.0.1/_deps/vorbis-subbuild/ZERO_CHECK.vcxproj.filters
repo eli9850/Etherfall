@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-subbuild\CMakeFiles\b934bf03d54907fcbcf778563750a889\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{5FA428D5-2C09-3407-8207-68978BCAB146}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

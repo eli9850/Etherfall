@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{77C6A2CA-2A98-3629-AC2F-89F3BC0FF7DC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>freetype-populate</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-mkdir.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating directories for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/tmp/freetype-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-download.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing download step (git clone) for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/tmp/freetype-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\freetype-populate-gitinfo.txt;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-update.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing update step for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -Dcan_fetch=YES -P C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/tmp/freetype-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\tmp\freetype-populate-gitupdate.cmake;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\freetype-populate-update-info.txt;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-patch.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing patch step for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DFREETYPE_DIR=C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-src -P C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/tools/freetype/PatchFreetype.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\freetype-populate-patch-info.txt;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-configure.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No configure step for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\tmp\freetype-populate-cfgcmd.txt;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-build.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No build step for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-install.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No install step for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\0ae423b957100b7eac0d923cce4f4eee\freetype-populate-test.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No test step for 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-test</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\93411c20217a61fde47685beebc3ea40\freetype-populate-complete.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Completed 'freetype-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/CMakeFiles/Debug/freetype-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/freetype-populate-prefix/src/freetype-populate-stamp/Debug/freetype-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-install;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-mkdir;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-download;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-update;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-patch;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-configure;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-build;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\src\freetype-populate-stamp\Debug\freetype-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\Debug\freetype-populate-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\c20569598428d52fb04165c5e1d1de48\freetype-populate.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\Debug\freetype-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\freetype-populate</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild -BC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild --check-stamp-file C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\PatchInfo.txt.in;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\UpdateInfo.txt.in;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\gitclone.cmake.in;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.27\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\3.27.4\CMakeSystem.cmake;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\freetype-populate-prefix\tmp\freetype-populate-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\CMakeFiles\freetype-populate">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\freetype-subbuild\ZERO_CHECK.vcxproj">
+      <Project>{0470E7ED-5534-3512-A4B4-2A5ED1AFDA2F}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

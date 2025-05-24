@@ -1,3 +1,11 @@
+*.vs
+*.bak
+*.pdb
+*.log
+*.tlog
+*.dir
+*x64
+
 # Prerequisites
 *.d
 

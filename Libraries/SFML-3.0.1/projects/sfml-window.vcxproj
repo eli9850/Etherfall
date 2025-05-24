@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B999400F-8EEE-3DD6-B3FB-37BE5DC2C40B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>sfml-window</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)Libraries\SFML-3.0.1\bin\$(Configuration)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sfml-window.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sfml-window-s-d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)Libraries\SFML-3.0.1\bin\$(Configuration)</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sfml-window.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sfml-window-s</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\SFML-3.0.1\include;$(SolutionDir)Libraries\SFML-3.0.1\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/extlibs/headers/glad/include" /external:I "C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/extlibs/headers/vulkan" /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4068;4505;4800;4275</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;SFML_STATIC;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\lib\Debug\sfml-window-s.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;SFML_STATIC;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\glad\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\vulkan;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\glad\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\vulkan;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\SFML-3.0.1\include;$(SolutionDir)Libraries\SFML-3.0.1\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/extlibs/headers/glad/include" /external:I "C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/extlibs/headers/vulkan" /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ConformanceMode>true</ConformanceMode>
+      <DisableSpecificWarnings>4068;4505;4800;4275</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;SFML_STATIC;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ProgramDataBaseFileName>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\lib\Release\sfml-window-s.pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;_WINSOCK_DEPRECATED_NO_WARNINGS;SFML_STATIC;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\glad\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\vulkan;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\glad\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\extlibs\headers\vulkan;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/src/SFML/Window/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1 -BC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build --check-stamp-file C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/src/SFML/Window/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Dependencies.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\src\SFML\Window\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/src/SFML/Window/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1 -BC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build --check-stamp-file C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/src/SFML/Window/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Dependencies.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\src\SFML\Window\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Clipboard.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Clipboard.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\ClipboardImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Context.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Context.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Cursor.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Cursor.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\CursorImpl.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Export.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\GlContext.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\GlContext.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\GlResource.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\GlResource.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\ContextSettings.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Event.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Event.inl" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\InputImpl.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Joystick.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Joystick.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\JoystickImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\JoystickManager.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\JoystickManager.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Keyboard.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Keyboard.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Mouse.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Mouse.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Touch.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Touch.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Sensor.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Sensor.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\SensorImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\SensorManager.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\SensorManager.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\VideoMode.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\VideoMode.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\VideoModeImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Vulkan.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Vulkan.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\VulkanImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Window.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\Window.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\WindowBase.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\WindowBase.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\WindowBase.inl" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\WindowEnums.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\include\SFML\Window\WindowHandle.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\WindowImpl.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\WindowImpl.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\CursorImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\CursorImpl.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\ClipboardImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\ClipboardImpl.cpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\InputImpl.cpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\JoystickImpl.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\JoystickImpl.hpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\SensorImpl.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\SensorImpl.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\Utils.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\VideoModeImpl.cpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\VulkanImplWin32.cpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\WindowImplWin32.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\WindowImplWin32.hpp" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\WglContext.cpp" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\src\SFML\Window\Win32\WglContext.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\ZERO_CHECK.vcxproj">
+      <Project>{87947629-6872-36D4-B6E3-9A4512FAA55D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\src\SFML\System\sfml-system.vcxproj">
+      <Project>{CE5A9C07-992A-3374-8F47-5434B213B715}</Project>
+      <Name>sfml-system</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

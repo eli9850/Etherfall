@@ -1,0 +1,3 @@
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/CMakeFiles/freetype-populate.dir
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/freetype-subbuild/CMakeFiles/ZERO_CHECK.dir

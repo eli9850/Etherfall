@@ -1,0 +1,37 @@
+{
+	"MapID":3,
+	"BackgroundID":3,
+	"Portals": [
+		{
+			"PortalID":1,
+			"Pos": [
+				100,
+				300
+			],
+			"MapID":2
+		},
+		{
+			"PortalID":1,
+			"Pos": [
+				500,
+				300
+			],
+			"MapID":1
+		},
+		{
+			"PortalID":1,
+			"Pos": [
+				1000,
+				300
+			],
+			"MapID":1
+		}
+	],
+	"Platforms": [
+		[0,500,500,500],
+		[650,500,850,500],
+		[0,800,1500,800]
+	],
+	"Climbables": [
+	]
+}

@@ -1,0 +1,8 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.27/Modules/CheckIncludeFiles.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/GNUInstallDirs.cmake
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-src/CMakeLists.txt
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-src/vorbis.pc.in
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-src/vorbisenc.pc.in
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-src/vorbisfile.pc.in

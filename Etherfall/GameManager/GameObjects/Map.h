@@ -1,0 +1,39 @@
+#pragma once
+#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <json.hpp>
+#include <filesystem>
+#include <memory>
+#include <vector>
+#include "Portal.h"
+#include "Player.h"
+#include "Platform.h"
+#include "Climbable.h"
+
+
+namespace Etherfall {
+	class Map
+	{
+	public:
+		Map(uint32_t map_id, sf::Vector2u window_size);
+		uint32_t handle_event(const std::optional<sf::Event>& event);
+		void handle_frame(uint64_t dt);
+		void draw(sf::RenderWindow& window);
+
+	private:
+		void setView();
+
+	private:
+		sf::Vector2u m_window_size;
+		sf::Vector2u m_background_size;
+		std::unique_ptr<sf::Sprite> m_background_sprite;
+		std::vector<Portal> m_portals;
+		std::vector<Platform> m_platforms;
+		std::vector<Climbable> m_climbables;
+		std::unique_ptr<Player> m_player;
+		sf::View m_view;
+	};
+}
+

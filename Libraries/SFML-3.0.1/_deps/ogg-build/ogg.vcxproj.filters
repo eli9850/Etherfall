@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\src\bitwise.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\src\framing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\include\ogg\config_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include\ogg\ogg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include\ogg\os_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\src\crctable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{4E747CF4-8EA7-346B-B0A3-9549D679E2E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AEDF1BA3-C65C-393B-9F67-8196D4D756A4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

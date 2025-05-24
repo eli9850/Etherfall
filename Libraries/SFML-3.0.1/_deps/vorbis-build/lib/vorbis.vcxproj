@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3067AAA0-E28E-3A91-A202-BB779D131399}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>vorbis</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">vorbis.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">vorbisd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vorbis.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">vorbis</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-src\include;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-src/lib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1 -BC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build --check-stamp-file C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-build/lib/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\cmake\VorbisConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-build\lib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-src/lib/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1 -BC:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build --check-stamp-file C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-build/lib/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\BasicConfigVersion-SameMajorVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\WriteBasicConfigVersionFile.cmake;C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\cmake\VorbisConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-build\lib\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\envelope.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lpc.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lsp.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\codebook.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\misc.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\psy.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\masking.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\os.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\mdct.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\smallft.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\highlevel.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\registry.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\scales.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\window.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lookup.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lookup_data.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\codec_internal.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\backends.h" />
+    <ClInclude Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\bitrate.h" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\mdct.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\smallft.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\block.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\envelope.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\window.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lsp.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lpc.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\analysis.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\synthesis.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\psy.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\info.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\floor1.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\floor0.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\res0.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\mapping0.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\registry.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\codebook.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\sharedbook.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\lookup.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\bitrate.c" />
+    <ClCompile Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\lib\vorbisenc.c" />
+    <None Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\vorbis-src\win32\vorbis.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\ZERO_CHECK.vcxproj">
+      <Project>{87947629-6872-36D4-B6E3-9A4512FAA55D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-build\ogg.vcxproj">
+      <Project>{366BA9A4-9441-305A-9006-E2D316631D1E}</Project>
+      <Name>ogg</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

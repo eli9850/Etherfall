@@ -1,0 +1,3 @@
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-subbuild/CMakeFiles/vorbis-populate.dir
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/eli98/Downloads/SFML-3.0.1/SFML-3.0.1/build/_deps/vorbis-subbuild/CMakeFiles/ZERO_CHECK.dir

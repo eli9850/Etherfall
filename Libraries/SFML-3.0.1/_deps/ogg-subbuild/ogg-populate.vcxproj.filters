@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\78b1195beae7a4956aa8ad46bf41c2da\ogg-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\a7946dfcdffe771dd0e84d31e3787278\ogg-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\de7297879ee7d9b7fa45c329ebc42196\ogg-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\eli98\Downloads\SFML-3.0.1\SFML-3.0.1\build\_deps\ogg-subbuild\CMakeFiles\ogg-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{7D6BABB8-0FA3-33B7-85AD-7919688270F9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

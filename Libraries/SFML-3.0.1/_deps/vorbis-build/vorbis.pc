@@ -1,0 +1,15 @@
+# libvorbis pkg-config source file
+
+prefix=C:/Program Files/SFML
+exec_prefix=C:/Program Files/SFML/bin
+libdir=C:/Program Files/SFML/lib
+includedir=C:/Program Files/SFML/include
+
+Name: vorbis
+Description: vorbis is the primary Ogg Vorbis library
+Version: 1.3.7
+Requires.private: ogg
+Conflicts:
+Libs: -L${libdir} -lvorbis 
+Libs.private: 
+Cflags: -I${includedir}
