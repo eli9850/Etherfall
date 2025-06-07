@@ -1,31 +1,65 @@
 {
-	"MapID":2,
-	"BackgroundID":2,
+	"MapID": 2,
+	"BackgroundID": 2,
 	"Portals": [
 		{
-			"PortalID":1,
+			"PortalID": 1,
 			"Pos": [
 				200,
 				300
 			],
-			"MapID":1
+			"MapID": 1
 		},
 		{
-			"PortalID":1,
+			"PortalID": 1,
 			"Pos": [
 				400,
 				300
 			],
-			"MapID":3
+			"MapID": 3
 		}
 	],
 	"Platforms": [
-		[0,500,500,500],
-		[650,500,850,500],
-		[0,800,1500,800]
+		[
+			0,
+			300,
+			1500,
+			300
+		],
+		[
+			0,
+			380,
+			1500,
+			380
+		],
+		[
+			0,
+			460,
+			1500,
+			460
+		],
+		[
+			0,
+			540,
+			1500,
+			540
+		],
+		[
+			0,
+			620,
+			1500,
+			620
+		]
 	],
-	"Climbables":[		
+	"Climbables": [
+		{
+			"ClimbableID": 1,
+			"Pos": [
+				300,
+				200
+			],
+			"Size": 400
+		}
 	],
-	"Walls": [
-	]
+	"Walls": []
 }

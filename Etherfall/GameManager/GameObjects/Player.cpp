@@ -499,7 +499,7 @@ namespace Etherfall {
 			}
 		}
 		for (const auto& climbable : climbables) {
-			if (climbable.can_climb_up({ get_position().x, get_position().y })) {
+			if (climbable.can_climb_up(get_position())) {
 				set_current_animation_state(Animations::Climb, is_right);
 				m_player_sprite->setPosition({ climbable.get_x_position(), get_position().y });
 				return true;
@@ -531,7 +531,7 @@ namespace Etherfall {
 			return true;
 		}
 		for (const auto& climbable : climbables) {
-			if (climbable.can_climb_down({ get_position().x, get_position().y })) {
+			if (climbable.can_climb_down(get_position())) {
 				set_current_animation_state(Animations::Climb, is_right);
 				m_player_sprite->setPosition({ climbable.get_x_position(), get_position().y });
 				m_velocity = 0;

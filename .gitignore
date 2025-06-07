@@ -5,6 +5,7 @@
 *.tlog
 *.dir
 *x64
+*.idea
 
 # Prerequisites
 *.d
