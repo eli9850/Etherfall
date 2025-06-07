@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <memory>
 #include <vector>
+#include <optional>
 #include "Portal.h"
 #include "Player.h"
 #include "Platform.h"
@@ -18,15 +19,17 @@ namespace Etherfall {
 	class Map
 	{
 	public:
-		Map(uint32_t map_id, sf::Vector2u window_size);
+		Map(uint32_t map_id, sf::Vector2u window_size, const std::optional<uint32_t>& previous_map);
 		uint32_t handle_event(const std::optional<sf::Event>& event);
 		void handle_frame(uint64_t dt);
 		void draw(sf::RenderWindow& window);
+		uint32_t get_map_id() const;
 
 	private:
 		void setView();
 
 	private:
+		uint32_t m_map_id;
 		sf::Vector2u m_window_size;
 		sf::Vector2u m_background_size;
 		std::unique_ptr<sf::Sprite> m_background_sprite;

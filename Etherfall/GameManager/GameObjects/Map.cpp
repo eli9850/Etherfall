@@ -12,17 +12,23 @@ namespace Etherfall {
 	constexpr float view_x_size = 800;
 	constexpr float view_y_size = 600;
 
-	Map::Map(uint32_t map_id, sf::Vector2u window_size) :
+	Map::Map(uint32_t map_id, sf::Vector2u window_size, const std::optional<uint32_t>& previous_map) :
+		m_map_id(map_id),
 		m_window_size(std::move(window_size)),
 		m_view(sf::FloatRect({ 0, 0 }, { view_x_size, view_y_size }))
 	{
-		const auto& map_details = g_resource_manager->get_map_details_by_id(map_id);
+		const auto& map_details = g_resource_manager->get_map_details_by_id(m_map_id);
 		const auto& background_texture = g_resource_manager->get_background_texture(map_details.at("BackgroundID"));
 		m_background_sprite = std::make_unique<sf::Sprite>(background_texture);
+		std::optional<sf::Vector2f> player_position = std::nullopt;
 		for (const auto& portal : map_details.at("Portals")) {
-			m_portals.push_back(Portal(portal.at("PortalID"),
-										   { portal.at("Pos")[0], portal.at("Pos")[1]},
-											portal.at("MapID")));
+			auto portal_map_id = portal.at("MapID");
+			Portal p(portal.at("PortalID"), { portal.at("Pos")[0], portal.at("Pos")[1] }, portal_map_id);
+			if (previous_map.has_value() && portal_map_id == *previous_map) {
+				player_position = p.get_enter_position();
+			}
+			m_portals.push_back(std::move(p));
+			
 		}
 		for (const auto& platform : map_details.at("Platforms")) {
 			m_platforms.push_back(Platform({ platform[0], platform[1] }, { platform[2], platform[3] }));
@@ -39,7 +45,7 @@ namespace Etherfall {
 		m_background_size = background_texture.getSize();
 		m_walls.push_back(Wall({ 0,0 }, static_cast<float>(m_background_size.y)));
 		m_walls.push_back(Wall({ static_cast<float>(m_background_size.x),0 }, static_cast<float>(m_background_size.y)));
-		m_player = std::make_unique<Player>(1);
+		m_player = std::make_unique<Player>(1, player_position);
 		
 	}
 
@@ -106,5 +112,9 @@ namespace Etherfall {
 			wall.draw(window);
 		}
 		m_player->draw(window);
+	}
+
+	uint32_t Map::get_map_id() const {
+		return m_map_id;
 	}
 }

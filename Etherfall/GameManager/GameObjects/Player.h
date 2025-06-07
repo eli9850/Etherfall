@@ -54,7 +54,7 @@ namespace Etherfall{
 	class Player
 	{
 	public:
-		Player(uint32_t player_id);
+		Player(uint32_t player_id, const std::optional<sf::Vector2f>& position);
 		void handle_event(const std::optional<sf::Event>& event);
 		void handle_frame(uint64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
 		void draw(sf::RenderWindow& window);

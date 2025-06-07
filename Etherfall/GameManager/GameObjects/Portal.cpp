@@ -65,4 +65,8 @@ namespace Etherfall {
 	uint32_t Portal::get_map_id() const {
 		return m_map_id;
 	}
+
+	sf::Vector2f Portal::get_enter_position() const {
+		return m_enter_position;
+	}
 }

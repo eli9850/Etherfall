@@ -6,7 +6,7 @@
 
 namespace Etherfall {
 
-	Player::Player(uint32_t player_id) :
+	Player::Player(uint32_t player_id, const std::optional<sf::Vector2f>& position) :
 		m_player_id(player_id),
 		m_speed(300)
 	{
@@ -19,7 +19,13 @@ namespace Etherfall {
 		m_player_sprite->setScale((m_player_scale));
 		m_current_animation_state = AnimationState::IdleRight;
 		set_animation(Animations::Idle, 0);
-		m_player_sprite->setPosition({ 150, 150 });
+		if (position) {
+			m_player_sprite->setPosition(*position);
+		}
+		else {
+			m_player_sprite->setPosition({ 150, 150 });
+		}
+		
 
 		m_gravity = 1000;
 		m_velocity = 0;
@@ -539,7 +545,7 @@ namespace Etherfall {
 
 		auto platform = get_below_platform(platforms);
 		if (platform && 
-			platform->getYAtX(get_position().x) - get_position().y < 200) {
+			platform->getYAtX(get_position().x) - get_position().y < 300) {
 			set_current_animation_state(Animations::Jump, static_cast<uint32_t>(m_current_animation_state) % 2 == 0);
 			m_player_sprite->move({ 0, 1 });
 			return true;

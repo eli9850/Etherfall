@@ -20,7 +20,7 @@ namespace Etherfall {
     void GameManager::initialize() {
         m_window.setFramerateLimit(60);
         m_window.setKeyRepeatEnabled(false);
-        m_map = std::make_unique<Map>(1, m_window.getSize());
+        m_map = std::make_unique<Map>(1, m_window.getSize(), std::nullopt);
     }
 
 	void GameManager::run() {
@@ -34,7 +34,7 @@ namespace Etherfall {
                 if (m_window.hasFocus()) {
                     auto map = m_map->handle_event(event);
                     if (map != 0) {
-                        m_map = std::make_unique<Map>(map, m_window.getSize());
+                        m_map = std::make_unique<Map>(map, m_window.getSize(), m_map->get_map_id());
                     }
                 }            
             }

@@ -17,14 +17,6 @@
 				300
 			],
 			"MapID":3
-		},
-		{
-			"PortalID":1,
-			"Pos": [
-				600,
-				300
-			],
-			"MapID":3
 		}
 	],
 	"Platforms": [

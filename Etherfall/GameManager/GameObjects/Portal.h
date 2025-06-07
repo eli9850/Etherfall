@@ -16,6 +16,7 @@ namespace Etherfall {
 		void handle_frame(uint64_t dt);
 		void draw(sf::RenderWindow& window);
 		uint32_t get_map_id() const;
+		sf::Vector2f get_enter_position() const;
 	private:
 		std::unique_ptr<sf::Sprite> m_portal_sprite;
 		sf::Vector2i m_frame_size;
