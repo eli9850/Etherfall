@@ -6,9 +6,8 @@
 
 namespace Etherfall {
 
-	Player::Player(uint32_t player_id, sf::Vector2u map_size) :
+	Player::Player(uint32_t player_id) :
 		m_player_id(player_id),
-		m_map_size(std::move(map_size)),
 		m_speed(300)
 	{
 		const auto& player_details = g_resource_manager->get_player_details_by_id(player_id);
@@ -19,15 +18,12 @@ namespace Etherfall {
 						   static_cast<float>(player_details.at("PlayerScale")[1]) };
 		m_player_sprite->setScale((m_player_scale));
 		m_current_animation_state = AnimationState::IdleRight;
-		m_new_animation_state = AnimationState::IdleRight;
 		set_animation(Animations::Idle, 0);
 		m_player_sprite->setPosition({ 150, 150 });
-		
-		m_gravity = 500;
+
+		m_gravity = 1000;
 		m_velocity = 0;
-		m_is_on_ground = true;
-		m_is_jump = false;
-		m_is_climb = false;
+
 	}
 
 	void Player::initialize_animations(const nlohmann::json& player_sprites) {
@@ -60,12 +56,6 @@ namespace Etherfall {
 		}
 	}
 
-	void Player::set_animation(Animations animation, uint32_t frame_number) {
-		const auto& new_animation = m_animations[animation][frame_number];
-		m_player_sprite->setTextureRect(new_animation);
-		m_player_sprite->setOrigin({ (float)new_animation.size.x / 2, (float)new_animation.size.y });
-	}
-
 	void Player::handle_event(const std::optional<sf::Event>& event) {
 		
 		if (!event) {
@@ -74,181 +64,576 @@ namespace Etherfall {
 		auto key_pressed_event = event->getIf<sf::Event::KeyPressed>();
 		if (key_pressed_event) {
 			m_pressed_keys.insert(key_pressed_event->code);
-			if (key_pressed_event->code == sf::Keyboard::Key::Right && 
-				!m_pressed_keys.contains(sf::Keyboard::Key::Left) &&
-				!m_is_climb)
-			{
-				if (m_is_jump) {
-					m_new_animation_state = AnimationState::JumpRight;
-				}
-				else {
-					m_new_animation_state = AnimationState::RunRight;
-				}
-				
-			}
-			else if (key_pressed_event->code == sf::Keyboard::Key::Left &&
-					!m_pressed_keys.contains(sf::Keyboard::Key::Right) &&
-					!m_is_climb)
-			{
-				if (m_is_jump) {
-					m_new_animation_state = AnimationState::JumpLeft;
-				}
-				else {
-					m_new_animation_state = AnimationState::RunLeft;
-				}
-			}
-			else if (key_pressed_event->code == sf::Keyboard::Key::LAlt && !m_is_jump && (m_is_on_ground || m_is_climb)) {
-				m_is_jump = true;
-				m_is_on_ground = false; 
-				m_velocity = -300;
-				m_is_climb = false;
-				if (static_cast<uint32_t>(m_current_animation_state) % 2 == 0) {
-					m_new_animation_state = AnimationState::JumpRight;	
-				}
-				else {
-					m_new_animation_state = AnimationState::JumpLeft;
-				}
-				
-			}
 		}
 		auto key_released_event = event->getIf<sf::Event::KeyReleased>();
 		if (key_released_event) {
 			m_pressed_keys.erase(key_released_event->code);
-			if (key_released_event->code == sf::Keyboard::Key::Right &&
-				m_current_animation_state != AnimationState::RunLeft)
-			{
-				if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
-					m_new_animation_state = AnimationState::RunLeft;
-				}
-				else {
-					m_new_animation_state = AnimationState::IdleRight;
-				}
-				
-			}
-			else if (key_released_event->code == sf::Keyboard::Key::Left &&
-				m_current_animation_state != AnimationState::RunRight)
-			{
-				if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
-					m_new_animation_state = AnimationState::RunRight;
-				}
-				else {
-					m_new_animation_state = AnimationState::IdleLeft;
-				}
-			}
 		}
 	}
 
-	void Player::handle_frame(uint64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
+	void Player::handle_frame(uint64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
 
 		m_timer += dt;
-		bool is_animation_change = false;
-		if (m_current_animation_state != m_new_animation_state) {
-			m_current_animation_state = m_new_animation_state;
-			m_timer = 0;
-			m_current_frame = 0;
-			is_animation_change = true;
-			if (static_cast<uint32_t>(m_current_animation_state) % 2 != 0) {
-				m_player_sprite->setScale({ m_player_scale.x * -1, m_player_scale.y });
+		auto possible_states = get_next_possible_states();
+		auto current_animation = m_current_animation_state;
+		if (possible_states.size()) {
+			if (handle_next_state(dt, possible_states, platforms, climbables, walls)) {
+				if (current_animation != m_current_animation_state) {
+					m_timer = 0;
+					m_current_frame = 0;
+				}
+				handle_animation();
+			}
+			return;
+		}
+	}
+
+	std::deque<PossibleState> Player::get_next_possible_states() {
+
+		switch (m_current_animation_state)
+		{
+		case Etherfall::AnimationState::IdleRight:
+		case Etherfall::AnimationState::IdleLeft:
+			return get_next_possible_states_from_idle();
+		case Etherfall::AnimationState::JumpRight:
+			return get_next_possible_states_from_jump_right();
+		case Etherfall::AnimationState::JumpLeft:
+			return get_next_possible_states_from_jump_left();
+		case Etherfall::AnimationState::RunRight:
+			return get_next_possible_states_from_run_right();
+		case Etherfall::AnimationState::RunLeft:
+			return get_next_possible_states_from_run_left();
+		case Etherfall::AnimationState::ClimbRight:
+		case Etherfall::AnimationState::ClimbLeft:
+			return get_next_possible_states_from_climb();
+		default:
+			break;
+		}
+		return {};
+	}
+
+	std::deque<PossibleState> Player::get_next_possible_states_from_idle() {
+
+		std::deque<PossibleState> possible_states;
+
+		if (m_current_animation_state == Etherfall::AnimationState::IdleRight) {
+			possible_states.push_front(PossibleState::IdleRight);
+		}
+		if (m_current_animation_state == Etherfall::AnimationState::IdleLeft) {
+			possible_states.push_front(PossibleState::IdleLeft);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::RunRight);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::RunLeft);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt)) {
+			if (m_current_animation_state == AnimationState::IdleRight) {
+				possible_states.push_front(PossibleState::JumpIdleRight);
 			}
 			else {
-				m_player_sprite->setScale(m_player_scale);
+				possible_states.push_front(PossibleState::JumpIdleLeft);
+
 			}
 		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt) &&
+				 m_pressed_keys.contains(sf::Keyboard::Key::Down)) {
+			possible_states.push_front(PossibleState::JumpDownRight);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbUp);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::Down)) {
+			possible_states.push_front(PossibleState::ClimbDown);
+		}
+
+		return possible_states;
+	}
+
+    std::deque<PossibleState> Player::get_next_possible_states_from_run_right() {
 		
-		if (m_timer > 80000 || is_animation_change) {
-			m_timer %= 80000;
-			const auto& animation_frames = m_animations[static_cast<Animations>(static_cast<uint32_t>(m_current_animation_state) / 2)];
+		std::deque<PossibleState> possible_states;
+
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::RunRight);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::RunLeft);
+		}
+		if (!m_pressed_keys.contains(sf::Keyboard::Key::Right) && 
+			!m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::IdleRight);
+		}
+
+		if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt)) {
+			if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+				possible_states.push_front(PossibleState::JumpRight);
+			}
+			else {
+				possible_states.push_front(PossibleState::JumpIdleRight);
+			}
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt) &&
+			m_pressed_keys.contains(sf::Keyboard::Key::Down)) {
+			possible_states.push_front(PossibleState::JumpDownRight);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Down) &&
+			!m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbDown);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbUp);
+		}
+
+		return possible_states;
+	}
+
+	std::deque<PossibleState> Player::get_next_possible_states_from_run_left() {
+
+		std::deque<PossibleState> possible_states;
+
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::RunLeft);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::RunRight);
+		}
+		if (!m_pressed_keys.contains(sf::Keyboard::Key::Right) &&
+			!m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::IdleLeft);
+		}
+
+		if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt)) {
+			if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+				possible_states.push_front(PossibleState::JumpLeft);
+			}
+			else {
+				possible_states.push_front(PossibleState::JumpIdleLeft);
+			}
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt) &&
+			m_pressed_keys.contains(sf::Keyboard::Key::Down)) {
+			possible_states.push_front(PossibleState::JumpDownRight);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Down) &&
+			!m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbDown);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbUp);
+		}
+
+		return possible_states;
+	}
+
+	std::deque<PossibleState> Player::get_next_possible_states_from_jump_right() {
+
+		std::deque<PossibleState> possible_states;
+
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::JumpRight);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::JumpLeft);
+		}
+		else if (!m_pressed_keys.contains(sf::Keyboard::Key::Left) &&
+				 !m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::JumpIdleRight);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbUp);
+		}
+
+		return possible_states;
+	}
+
+	std::deque<PossibleState> Player::get_next_possible_states_from_jump_left() {
+
+		std::deque<PossibleState> possible_states;
+
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::JumpLeft);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::JumpRight);
+		}
+		else if (!m_pressed_keys.contains(sf::Keyboard::Key::Left) &&
+				 !m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::JumpIdleLeft);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbUp);
+		}
+
+		return possible_states;
+	}
+
+	std::deque<PossibleState> Player::get_next_possible_states_from_climb() {
+
+		std::deque<PossibleState> possible_states;
+
+		if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt) &&
+			m_pressed_keys.contains(sf::Keyboard::Key::Right) &&
+			!m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
+			possible_states.push_front(PossibleState::JumpRight);
+		}
+		else if (m_pressed_keys.contains(sf::Keyboard::Key::LAlt) &&
+			m_pressed_keys.contains(sf::Keyboard::Key::Left) &&
+			!m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
+			possible_states.push_front(PossibleState::JumpLeft);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Down) &&
+			!m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbDown);
+		}
+		if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
+			possible_states.push_front(PossibleState::ClimbUp);
+		}
+		return possible_states;
+	}
+
+	std::optional<Platform> Player::is_on_ground(const std::vector<Platform>& platforms) {
+		for (const auto& platform : platforms) {
+			if (platform.isWithinX(get_position().x) && platform.getYAtX(get_position().x) == get_position().y) {
+				return platform;
+			}
+		}
+		return std::nullopt;
+	}
+
+	std::optional<Platform> Player::get_next_platform(uint64_t dt, std::vector<Platform> platforms, float distance_x, float distance_y) {
+		
+		auto compareX = get_position().x;
+
+		std::sort(platforms.begin(), platforms.end(), [compareX](const Platform& a, const Platform& b) {
+			return a.getYAtX(compareX) < b.getYAtX(compareX);
+		});
+
+ 		for (const auto& platform : platforms) {
+			if (platform.isWithinX(get_position().x + distance_x) &&
+				platform.getYAtX(get_position().x) >= get_position().y + distance_y &&
+				platform.getYAtX(get_position().x + distance_x) <= get_position().y + (m_velocity * dt / 1000000)) {
+				return platform;
+			}
+		}
+		return std::nullopt;
+	}
+
+	std::optional<Platform> Player::get_below_platform(std::vector<Platform> platforms) {
+
+		auto compareX = get_position().x;
+
+		std::sort(platforms.begin(), platforms.end(), [compareX](const Platform& a, const Platform& b) {
+			return a.getYAtX(compareX) < b.getYAtX(compareX);
+			});
+
+		for (const auto& platform : platforms) {
+			if (platform.isWithinX(get_position().x) &&
+				platform.getYAtX(get_position().x) > get_position().y) {
+				return platform;
+			}
+		}
+		return std::nullopt;
+	}
+
+	std::optional<Wall> Player::get_next_wall(const std::vector<Wall>& walls, float distance) {
+
+		for (const auto& wall : walls) {
+			if (wall.is_through_wall(get_position(), get_width_size() / 2, distance)) {
+				return wall;
+			}
+		}
+		return std::nullopt;
+	}
+
+	bool Player::handle_next_state(uint64_t dt, const std::deque<PossibleState>& states, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
+		
+		float distance = m_speed * dt / 1000000;
+		m_velocity += m_gravity * dt / 1000000;
+		for (const auto& state : states) {
+			switch (state)
+			{
+			case Etherfall::PossibleState::IdleRight:
+				if (handle_next_idle_state(dt, true, platforms, climbables)) {
+					m_velocity = 0;
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::IdleLeft:
+				if (handle_next_idle_state(dt, false, platforms, climbables)) {
+					m_velocity = 0;
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::JumpRight: 
+				if (handle_next_jump_state(dt, true, distance, platforms, climbables, walls)) {
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::JumpLeft:
+				if (handle_next_jump_state(dt , false, -1 *distance, platforms, climbables, walls)) {
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::JumpIdleRight:
+				if (handle_next_jump_state(dt, true, 0, platforms, climbables, walls)) {
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::JumpIdleLeft:
+				if (handle_next_jump_state(dt, false, 0, platforms, climbables, walls)) {
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::RunRight: 
+				if (handle_next_run_state(dt, true, distance, platforms, climbables, walls)) {
+					m_velocity = 0;
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::RunLeft :
+				if (handle_next_run_state(dt, false, -1 * distance, platforms, climbables, walls)) {
+					m_velocity = 0;
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::ClimbUp:
+				if (handle_next_climb_up_state(dt, true, -1 * distance, platforms, climbables)) {
+					m_velocity = 0;
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::ClimbDown:
+				if (handle_next_climb_down_state(dt, true, distance, platforms, climbables)) {
+					return true;
+				}
+				break;
+			case Etherfall::PossibleState::ClimbIdleRight:
+			case Etherfall::PossibleState::ClimbIdleLeft:
+				return false;
+			case Etherfall::PossibleState::JumpDownRight:
+			case Etherfall::PossibleState::JumpDownLeft:
+				if (handle_next_jump_down_state(dt, platforms)) {
+					return true;
+				}
+				break;
+			default:
+				return false;
+			}
+		}
+		return false;
+	}
+
+	bool Player::handle_next_idle_state(uint64_t dt, bool is_right, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
+		
+		set_current_animation_state(Animations::Idle, is_right);
+		if (is_on_ground(platforms)) {
+			return true;
+		}
+		set_current_animation_state(Animations::Jump, is_right);
+		return true;
+	}
+
+	bool Player::handle_next_jump_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
+
+		if (m_current_animation_state != AnimationState::JumpRight &&
+			m_current_animation_state != AnimationState::JumpLeft) {
+			m_velocity = -400;
+		}
+		set_current_animation_state(Animations::Jump, is_right);
+
+		if (auto wall = get_next_wall(walls, distance); wall) {
+			auto distance_from_wall = get_width_size() / 2 * (is_right ? -1 : 1);
+			distance = 0;
+		}
+
+		auto platform = get_next_platform(dt, platforms, distance);
+		if (platform) {
+			m_player_sprite->setPosition({ get_position().x + distance, platform->getYAtX(get_position().x + distance) });
+			set_current_animation_state(Animations::Idle, is_right);
+			return true;
+		}
+		m_player_sprite->move({ distance, m_velocity * dt / 1000000 });
+		
+		return true;
+	}
+
+	bool Player::handle_next_run_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
+
+		set_current_animation_state(Animations::Run, is_right);
+		if (const auto platform = is_on_ground(platforms); platform) {
+			if (auto wall = get_next_wall(walls, distance); wall) {
+				auto distance_from_wall = get_width_size() / 2 * (is_right ? -1 : 1);
+				m_player_sprite->setPosition({ wall->get_x() + distance_from_wall, platform->getYAtX(wall->get_x() + distance_from_wall) });
+			}
+			else {
+				m_player_sprite->setPosition({ get_position().x + distance, platform->getYAtX(get_position().x + distance) });
+			}
+			m_velocity = 0;
+			return true;
+		}
+		set_current_animation_state(Animations::Jump, is_right);
+		return true;
+	}
+
+	bool Player::handle_next_climb_up_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
+
+		if (m_current_animation_state == AnimationState::ClimbRight) {
+			for (const auto& climbable : climbables) {
+				if (climbable.can_climb_up({ get_position().x, get_position().y + distance })) {
+					m_player_sprite->move({ 0, distance });
+					return true;
+				}
+			}
+			if (auto platform = get_next_platform(dt, platforms, 0, distance); platform) {
+				set_current_animation_state(Animations::Idle, is_right);
+				m_player_sprite->setPosition({ get_position().x, platform->getYAtX(get_position().x) });
+				return true;
+			}
+		}
+		for (const auto& climbable : climbables) {
+			if (climbable.can_climb_up({ get_position().x, get_position().y })) {
+				set_current_animation_state(Animations::Climb, is_right);
+				m_player_sprite->setPosition({ climbable.get_x_position(), get_position().y });
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool Player::handle_next_climb_down_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
+
+		if (m_current_animation_state == AnimationState::ClimbRight) {
+			for (const auto& climbable : climbables) {
+				if (climbable.can_climb_down({ get_position().x, get_position().y + distance })) {
+					m_player_sprite->move({ 0, distance });
+					m_velocity = 0;
+					return true;
+				}
+			}
+			
+			if (auto platform = get_next_platform(dt, platforms); platform) {
+				set_current_animation_state(Animations::Idle, is_right);
+				m_player_sprite->setPosition({ get_position().x, platform->getYAtX(get_position().x) });
+				m_velocity = 0;
+				return true;
+			}
+			m_player_sprite->move({ 0, distance });
+			set_current_animation_state(Animations::Jump, is_right);
+			m_velocity = m_speed;
+			return true;
+		}
+		for (const auto& climbable : climbables) {
+			if (climbable.can_climb_down({ get_position().x, get_position().y })) {
+				set_current_animation_state(Animations::Climb, is_right);
+				m_player_sprite->setPosition({ climbable.get_x_position(), get_position().y });
+				m_velocity = 0;
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool Player::handle_next_jump_down_state(uint64_t dt, const std::vector<Platform>& platforms) {
+
+		auto platform = get_below_platform(platforms);
+		if (platform && 
+			platform->getYAtX(get_position().x) - get_position().y < 200) {
+			set_current_animation_state(Animations::Jump, static_cast<uint32_t>(m_current_animation_state) % 2 == 0);
+			m_player_sprite->move({ 0, 1 });
+			return true;
+		}
+		return false;
+
+		
+	}
+
+	void Player::handle_animation() {
+		if (static_cast<uint32_t>(m_current_animation_state) % 2 != 0) {
+			m_player_sprite->setScale({ m_player_scale.x * -1, m_player_scale.y });
+		}
+		else {
+			m_player_sprite->setScale(m_player_scale);
+		}
+		switch (m_current_animation_state)
+		{
+		case Etherfall::AnimationState::IdleRight:
+		case Etherfall::AnimationState::IdleLeft:
+			handle_idle_animation();
+			break;
+		case Etherfall::AnimationState::JumpRight:
+		case Etherfall::AnimationState::JumpLeft:
+			handle_jump_animation();
+			break;
+		case Etherfall::AnimationState::RunRight:
+		case Etherfall::AnimationState::RunLeft:
+			handle_run_animation();
+			break;
+		case Etherfall::AnimationState::ClimbRight:
+		case Etherfall::AnimationState::ClimbLeft:
+			handle_climb_animation();
+			break;
+		default:
+			break;
+		}
+	}
+	
+	void Player::handle_idle_animation() {
+
+		if (m_timer > 100000) {
+			m_timer %= 100000;
+			const auto& animation_frames = m_animations[Animations::Idle];
 			m_current_frame = (m_current_frame + 1) % animation_frames.size();
 			const auto& animation_rect = animation_frames[m_current_frame];
 			set_animation(static_cast<Animations>(static_cast<uint32_t>(m_current_animation_state) / 2), m_current_frame);
 		}
-		
-		move_player(dt, platforms, climbables);
 	}
 
-	void Player::move_player(int64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
-
-		std::cout << get_position().x << " | " << get_position().y << std::endl;
-
-		float distance = m_speed * dt / 1000000;
-
-		if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
-			for (const auto& climbable : climbables) {
-				if (climbable.can_climb({ get_position().x, get_position().y - m_player_sprite->getTextureRect().size.y / 2 })) {
-					m_new_animation_state = AnimationState::ClimbRight;
-					m_is_jump = false;
-					m_is_on_ground = false;
-					m_is_climb = true;
-					m_player_sprite->setPosition({ climbable.get_x_position(), get_position().y });
-				}
-			}
+	void Player::handle_run_animation() {
+		if (m_timer > 80000) {
+			m_timer %= 80000;
+			const auto& animation_frames = m_animations[Animations::Run];
+			m_current_frame = (m_current_frame + 1) % animation_frames.size();
+			const auto& animation_rect = animation_frames[m_current_frame];
+			set_animation(static_cast<Animations>(static_cast<uint32_t>(m_current_animation_state) / 2), m_current_frame);
 		}
+	}
 
-		if (m_is_climb) {
-			if (m_pressed_keys.contains(sf::Keyboard::Key::Up)) {
-				m_player_sprite->move({ 0, -distance });
-			}
-			if (m_pressed_keys.contains(sf::Keyboard::Key::Down)) {
-				m_player_sprite->move({ 0, distance });
-			}
-			return;
+	void Player::handle_jump_animation() {
+		if (m_timer > 30000) {
+			m_timer %= 30000;
+			const auto& animation_frames = m_animations[Animations::Jump];
+			m_current_frame++;
+			m_current_frame = std::min(m_current_frame, static_cast<uint32_t>(animation_frames.size() - 1));
+			const auto& animation_rect = animation_frames[m_current_frame];
+			set_animation(static_cast<Animations>(static_cast<uint32_t>(m_current_animation_state) / 2), m_current_frame);
 		}
+	}
 
-		m_is_on_ground = false;
-		m_velocity += m_gravity * dt / 1000000;
-		for (const auto& platform : platforms) {
-			float playerX = get_position().x;
-			if (platform.isWithinX(playerX)) {
-				float groundY = platform.getYAtX(playerX);
-				float playerFootY = get_position().y;
-
-				if (playerFootY <= groundY && playerFootY + m_velocity * dt / 1000000 > groundY) {
-					m_player_sprite->setPosition({ playerX, groundY });
-					m_velocity = 0;
-					m_is_on_ground = true;
-					m_is_jump = false;
-					if (m_current_animation_state == AnimationState::JumpRight) {
-						if (m_pressed_keys.contains(sf::Keyboard::Key::Right)) {
-							m_new_animation_state = AnimationState::RunRight;
-						}
-						else {
-							m_new_animation_state = AnimationState::IdleRight;
-						}
-					}
-					else if (m_current_animation_state == AnimationState::JumpLeft) {
-						if (m_pressed_keys.contains(sf::Keyboard::Key::Left)) {
-							m_new_animation_state = AnimationState::RunLeft;
-						}
-						else {
-							m_new_animation_state = AnimationState::IdleLeft;
-						}
-					}
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) &&
-						get_position().x < m_map_size.x - get_width_size() / 2) {
-						m_player_sprite->setPosition({ playerX + distance, platform.getYAtX(playerX + distance) });
-					}
-
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) &&
-						get_position().x > get_width_size() / 2) {
-						m_player_sprite->setPosition({ playerX - distance, platform.getYAtX(playerX - distance) });
-					}
-					return;
-					
-				}
-			}
+	void Player::handle_climb_animation() {
+		if (m_timer > 80000) {
+			m_timer %= 80000;
+			const auto& animation_frames = m_animations[Animations::Climb];
+			m_current_frame = (m_current_frame + 1) % animation_frames.size();
+			const auto& animation_rect = animation_frames[m_current_frame];
+			set_animation(static_cast<Animations>(static_cast<uint32_t>(m_current_animation_state) / 2), m_current_frame);
 		}
-		m_player_sprite->move({ 0, (float)m_velocity * dt / 1000000 });
+	}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) &&
-			get_position().x < m_map_size.x - get_width_size() / 2) {
-			m_player_sprite->move({ distance, 0 });
-		}
+	void Player::set_current_animation_state(Animations animation, bool is_right) {
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) &&
-			get_position().x > get_width_size() / 2) {
-			m_player_sprite->move({ -distance, 0 });
+		AnimationState new_state = static_cast<AnimationState>(static_cast<uint32_t>(animation) * 2 + !is_right);
+		if (m_current_animation_state != new_state) {
+			set_animation(static_cast<Animations>(animation));
+			m_current_animation_state = new_state;
 		}
-		
+	}
+
+	void Player::set_animation(Animations animation, uint32_t frame_number) {
+		const auto& new_animation = m_animations[animation][frame_number];
+		m_player_sprite->setTextureRect(new_animation);
+		m_player_sprite->setOrigin({ (float)new_animation.size.x / 2, (float)new_animation.size.y });
 	}
 
 	void Player::draw(sf::RenderWindow& window) {

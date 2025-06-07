@@ -32,8 +32,15 @@ namespace Etherfall {
 												{ climbable.at("Pos")[0], climbable.at("Pos")[1] },
 												  climbable.at("Size")));
 		}
-		m_player = std::make_unique<Player>(1, background_texture.getSize());
+		for (const auto& wall : map_details.at("Walls")) {
+			m_walls.push_back(Wall({ wall.at("Pos")[0], wall.at("Pos")[1] },
+				wall.at("Size")));
+		}
 		m_background_size = background_texture.getSize();
+		m_walls.push_back(Wall({ 0,0 }, static_cast<float>(m_background_size.y)));
+		m_walls.push_back(Wall({ static_cast<float>(m_background_size.x),0 }, static_cast<float>(m_background_size.y)));
+		m_player = std::make_unique<Player>(1);
+		
 	}
 
 	uint32_t Map::handle_event(const std::optional<sf::Event>& event) {
@@ -51,7 +58,7 @@ namespace Etherfall {
 		for (auto& portal : m_portals) {
 			portal.handle_frame(dt);
 		}
-		m_player->handle_frame(dt, m_platforms, m_climbables);
+		m_player->handle_frame(dt, m_platforms, m_climbables, m_walls);
 		setView();
 	}
 
@@ -94,6 +101,9 @@ namespace Etherfall {
 		}
 		for (auto& climbable : m_climbables) {
 			climbable.draw(window);
+		}
+		for (auto& wall : m_walls) {
+			wall.draw(window);
 		}
 		m_player->draw(window);
 	}

@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Platform.h"
 #include "Climbable.h"
+#include "Wall.h"
 
 
 namespace Etherfall {
@@ -32,6 +33,7 @@ namespace Etherfall {
 		std::vector<Portal> m_portals;
 		std::vector<Platform> m_platforms;
 		std::vector<Climbable> m_climbables;
+		std::vector<Wall> m_walls;
 		std::unique_ptr<Player> m_player;
 		sf::View m_view;
 	};

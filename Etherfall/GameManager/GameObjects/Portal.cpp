@@ -49,7 +49,7 @@ namespace Etherfall {
 	void Portal::handle_frame(uint64_t dt) {
 		m_timer += dt;
 		if (m_timer > m_frame_duration) {
-			m_timer -= m_frame_duration;
+			m_timer %= m_frame_duration;
 			m_current_frame++;
 			m_current_frame %= m_number_of_frames;
 			m_portal_sprite->setTextureRect(sf::IntRect{ {m_frame_size.x * (m_current_frame % m_number_of_rows), 

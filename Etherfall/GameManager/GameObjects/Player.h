@@ -5,8 +5,11 @@
 #include <map>
 #include <vector>
 #include <set>
+#include <queue>
+#include <optional>
 #include "GameManager/GameObjects/Platform.h"
 #include "GameManager/GameObjects/Climbable.h"
+#include "GameManager/GameObjects/Wall.h"
 
 namespace Etherfall{
 
@@ -28,42 +31,80 @@ namespace Etherfall{
 		RunLeft,
 		ClimbRight,
 		ClimbLeft
-		
+	};
+
+	enum class PossibleState
+	{
+		IdleRight = 0,
+		IdleLeft,
+		JumpIdleRight,
+		JumpIdleLeft,
+		JumpRight,
+		JumpLeft,
+		JumpDownRight,
+		JumpDownLeft,
+		RunRight,
+		RunLeft,
+		ClimbIdleRight,
+		ClimbIdleLeft,
+		ClimbUp,
+		ClimbDown
 	};
 
 	class Player
 	{
 	public:
-		Player(uint32_t player_id, sf::Vector2u map_size);
+		Player(uint32_t player_id);
 		void handle_event(const std::optional<sf::Event>& event);
-		void handle_frame(uint64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
+		void handle_frame(uint64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
 		void draw(sf::RenderWindow& window);
 		sf::Vector2f get_position() const;
 		float get_height_size() const;
 		float get_width_size() const;
 	private:
 		void initialize_animations(const nlohmann::json& player_sprites);
-		void set_animation(Animations animation, uint32_t frame_number);
-		void move_player(int64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
+
+		std::deque<PossibleState> get_next_possible_states();
+		std::deque<PossibleState> get_next_possible_states_from_idle();
+		std::deque<PossibleState> get_next_possible_states_from_run_right();
+		std::deque<PossibleState> get_next_possible_states_from_run_left();
+		std::deque<PossibleState> get_next_possible_states_from_jump_right();
+		std::deque<PossibleState> get_next_possible_states_from_jump_left();
+		std::deque<PossibleState> get_next_possible_states_from_climb();
+
+		std::optional<Platform> is_on_ground(const std::vector<Platform>& platforms);
+		// TODO: I need to find a way to fix the sort issue
+		std::optional<Platform> get_next_platform(uint64_t dt, std::vector<Platform> platforms, float distance_x = 0, float distance_y = 0);
+		std::optional<Platform> get_below_platform(std::vector<Platform> platforms);
+		std::optional<Wall> get_next_wall(const std::vector<Wall>& walls, float distance);
+		bool handle_next_state(uint64_t dt, const std::deque<PossibleState>& states, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
+		bool handle_next_idle_state(uint64_t dt, bool is_right, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
+		bool handle_next_jump_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
+		bool handle_next_run_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
+		bool handle_next_climb_up_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
+		bool handle_next_climb_down_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
+		bool handle_next_jump_down_state(uint64_t dt, const std::vector<Platform>& platforms);
+		
+		void handle_animation();
+		void handle_idle_animation();
+		void handle_run_animation();
+		void handle_jump_animation();
+		void handle_climb_animation();
+		void set_current_animation_state(Animations animation, bool is_right);
+		void set_animation(Animations animation, uint32_t frame_number = 0);
+		
 	private:
 		uint32_t m_player_id;
-		sf::Vector2u m_map_size;
 		std::unique_ptr<sf::Sprite> m_player_sprite;
 		std::unordered_map<Animations, std::vector<sf::IntRect>> m_animations;
 		sf::Vector2f m_player_scale;
 		float m_speed;
-
-		int64_t m_timer;
+		float m_gravity;
 		uint32_t m_current_frame;
 		AnimationState m_current_animation_state;
-		AnimationState m_new_animation_state;
-		std::set<sf::Keyboard::Key> m_pressed_keys;
-
-		float m_gravity;
 		float m_velocity;
-		bool m_is_on_ground;
-		bool m_is_jump;
-		bool m_is_climb;
+		int64_t m_timer;
+		std::set<sf::Keyboard::Key> m_pressed_keys;
 	};
 }
 
