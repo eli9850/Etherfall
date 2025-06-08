@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameManager\GameObjects\Curve.cpp" />
     <ClCompile Include="GameManager\GameObjects\Climbable.cpp" />
     <ClCompile Include="GameManager\GameManager.cpp" />
     <ClCompile Include="GameManager\GameObjects\Map.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="GameManager\GameObjects\Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameManager\GameObjects\Curve.h" />
     <ClInclude Include="GameManager\GameObjects\Climbable.h" />
     <ClInclude Include="GameManager\GameManager.h" />
     <ClInclude Include="GameManager\GameObjects\Map.h" />
@@ -167,6 +169,7 @@
     <ClInclude Include="GameManager\GameObjects\Platform.h" />
     <ClInclude Include="Utilities\LRUCache\LRUCache.h" />
     <ClInclude Include="GameManager\GameObjects\Wall.h" />
+    <ClInclude Include="GameManager\GameObjects\Walkable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

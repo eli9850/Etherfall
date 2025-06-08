@@ -7,7 +7,7 @@
 #include <set>
 #include <queue>
 #include <optional>
-#include "GameManager/GameObjects/Platform.h"
+#include "GameManager/GameObjects/Walkable.h"
 #include "GameManager/GameObjects/Climbable.h"
 #include "GameManager/GameObjects/Wall.h"
 
@@ -56,7 +56,7 @@ namespace Etherfall{
 	public:
 		Player(uint32_t player_id, const std::optional<sf::Vector2f>& position);
 		void handle_event(const std::optional<sf::Event>& event);
-		void handle_frame(uint64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
+		void handle_frame(uint64_t dt, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
 		void draw(sf::RenderWindow& window);
 		sf::Vector2f get_position() const;
 		float get_height_size() const;
@@ -72,18 +72,18 @@ namespace Etherfall{
 		std::deque<PossibleState> get_next_possible_states_from_jump_left();
 		std::deque<PossibleState> get_next_possible_states_from_climb();
 
-		std::optional<Platform> is_on_ground(const std::vector<Platform>& platforms);
+		std::shared_ptr<Walkable> is_on_ground(const std::vector<std::shared_ptr<Walkable>>& walkable);
 		// TODO: I need to find a way to fix the sort issue
-		std::optional<Platform> get_next_platform(uint64_t dt, std::vector<Platform> platforms, float distance_x = 0, float distance_y = 0);
-		std::optional<Platform> get_below_platform(std::vector<Platform> platforms);
+		std::shared_ptr<Walkable> get_next_walkable(uint64_t dt, std::vector<std::shared_ptr<Walkable>> walkable, float distance_x = 0, float distance_y = 0);
+		std::shared_ptr<Walkable> get_below_walkable(std::vector<std::shared_ptr<Walkable>> walkable);
 		std::optional<Wall> get_next_wall(const std::vector<Wall>& walls, float distance);
-		bool handle_next_state(uint64_t dt, const std::deque<PossibleState>& states, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
-		bool handle_next_idle_state(uint64_t dt, bool is_right, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
-		bool handle_next_jump_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
-		bool handle_next_run_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
-		bool handle_next_climb_up_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
-		bool handle_next_climb_down_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables);
-		bool handle_next_jump_down_state(uint64_t dt, const std::vector<Platform>& platforms);
+		bool handle_next_state(uint64_t dt, const std::deque<PossibleState>& states, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
+		bool handle_next_idle_state(uint64_t dt, bool is_right, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables);
+		bool handle_next_jump_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
+		bool handle_next_run_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
+		bool handle_next_climb_up_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables);
+		bool handle_next_climb_down_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables);
+		bool handle_next_jump_down_state(uint64_t dt, const std::vector<std::shared_ptr<Walkable>>& walkable);
 		
 		void handle_animation();
 		void handle_idle_animation();

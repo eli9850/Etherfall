@@ -1,9 +1,10 @@
 #include "Map.h"
 #include <json.hpp>
-#include <iostream>
 #include <fstream>
 #include <Windows.h>
 #include "GameManager/ResourceManager/ResourceManager.h"
+#include "Platform.h"
+#include "Curve.h"
 
 namespace Etherfall {
 
@@ -30,8 +31,18 @@ namespace Etherfall {
 			m_portals.push_back(std::move(p));
 			
 		}
+		for (const auto& curve : map_details.at("Curves")) {
+			std::vector<equation> equations;
+			for (const auto& equation : curve) {
+				equations.push_back({ equation[0], equation[1], equation[2], equation[3], {equation[4], equation[5] } });
+			}
+			auto real_curve = std::make_shared<Curve>(std::move(equations));
+			m_walkables.push_back(std::move(real_curve));
+		}
 		for (const auto& platform : map_details.at("Platforms")) {
-			m_platforms.push_back(Platform({ platform[0], platform[1] }, { platform[2], platform[3] }));
+			auto real_platform = std::make_shared<Platform>(sf::Vector2f({ platform[0], platform[1] }),
+				sf::Vector2f({ platform[2], platform[3] }));
+			m_walkables.push_back(std::move(real_platform));
 		}
 		for (const auto& climbable : map_details.at("Climbables")) {
 			m_climbables.push_back(Climbable(climbable.at("ClimbableID"),
@@ -64,7 +75,7 @@ namespace Etherfall {
 		for (auto& portal : m_portals) {
 			portal.handle_frame(dt);
 		}
-		m_player->handle_frame(dt, m_platforms, m_climbables, m_walls);
+		m_player->handle_frame(dt, m_walkables, m_climbables, m_walls);
 		setView();
 	}
 
@@ -102,8 +113,8 @@ namespace Etherfall {
 		for (auto& portal : m_portals) {
 			portal.draw(window);
 		}
-		for (auto& platform : m_platforms) {
-			platform.draw(window);
+		for (auto& walkable : m_walkables) {
+			walkable->draw(window);
 		}
 		for (auto& climbable : m_climbables) {
 			climbable.draw(window);

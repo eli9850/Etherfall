@@ -1,6 +1,4 @@
 #include "Platform.h"
-#include <json.hpp>
-#include "GameManager/ResourceManager/ResourceManager.h"
 
 namespace Etherfall {
 
@@ -16,7 +14,7 @@ namespace Etherfall {
 	}
 
 	bool Platform::isWithinX(float x) const {
-		return (x >= std::min(m_start.x, m_end.x) && x <= std::max(m_start.x, m_end.x));
+		return x >= m_start.x && x <= m_end.x;
 	}
 
 	void Platform::draw(sf::RenderWindow& window) {

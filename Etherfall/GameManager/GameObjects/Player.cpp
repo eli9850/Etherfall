@@ -77,13 +77,13 @@ namespace Etherfall {
 		}
 	}
 
-	void Player::handle_frame(uint64_t dt, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
+	void Player::handle_frame(uint64_t dt, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
 
 		m_timer += dt;
 		auto possible_states = get_next_possible_states();
 		auto current_animation = m_current_animation_state;
 		if (possible_states.size()) {
-			if (handle_next_state(dt, possible_states, platforms, climbables, walls)) {
+			if (handle_next_state(dt, possible_states, walkables, climbables, walls)) {
 				if (current_animation != m_current_animation_state) {
 					m_timer = 0;
 					m_current_frame = 0;
@@ -299,48 +299,48 @@ namespace Etherfall {
 		return possible_states;
 	}
 
-	std::optional<Platform> Player::is_on_ground(const std::vector<Platform>& platforms) {
-		for (const auto& platform : platforms) {
-			if (platform.isWithinX(get_position().x) && platform.getYAtX(get_position().x) == get_position().y) {
-				return platform;
+	std::shared_ptr<Walkable> Player::is_on_ground(const std::vector<std::shared_ptr<Walkable>>& walkables) {
+		for (const auto& walkable : walkables) {
+			if (walkable->isWithinX(get_position().x) && walkable->getYAtX(get_position().x) == get_position().y) {
+				return walkable;
 			}
 		}
-		return std::nullopt;
+		return nullptr;
 	}
 
-	std::optional<Platform> Player::get_next_platform(uint64_t dt, std::vector<Platform> platforms, float distance_x, float distance_y) {
+	std::shared_ptr<Walkable> Player::get_next_walkable(uint64_t dt, std::vector<std::shared_ptr<Walkable>> walkables, float distance_x, float distance_y) {
 		
 		auto compareX = get_position().x;
 
-		std::sort(platforms.begin(), platforms.end(), [compareX](const Platform& a, const Platform& b) {
-			return a.getYAtX(compareX) < b.getYAtX(compareX);
+		std::sort(walkables.begin(), walkables.end(), [compareX](std::shared_ptr<Walkable> a, std::shared_ptr<Walkable> b) {
+			return a->getYAtX(compareX) < b->getYAtX(compareX);
 		});
 
- 		for (const auto& platform : platforms) {
-			if (platform.isWithinX(get_position().x + distance_x) &&
-				platform.getYAtX(get_position().x) >= get_position().y + distance_y &&
-				platform.getYAtX(get_position().x + distance_x) <= get_position().y + (m_velocity * dt / 1000000)) {
-				return platform;
+ 		for (const auto& walkable : walkables) {
+			if (walkable->isWithinX(get_position().x + distance_x) &&
+				walkable->getYAtX(get_position().x) >= get_position().y + distance_y &&
+				walkable->getYAtX(get_position().x + distance_x) <= get_position().y + (m_velocity * dt / 1000000)) {
+				return walkable;
 			}
 		}
-		return std::nullopt;
+		return nullptr;
 	}
 
-	std::optional<Platform> Player::get_below_platform(std::vector<Platform> platforms) {
+	std::shared_ptr<Walkable> Player::get_below_walkable(std::vector<std::shared_ptr<Walkable>> walkables) {
 
 		auto compareX = get_position().x;
 
-		std::sort(platforms.begin(), platforms.end(), [compareX](const Platform& a, const Platform& b) {
-			return a.getYAtX(compareX) < b.getYAtX(compareX);
+		std::sort(walkables.begin(), walkables.end(), [compareX](std::shared_ptr<Walkable> a, std::shared_ptr<Walkable> b) {
+			return a->getYAtX(compareX) < b->getYAtX(compareX);
 			});
 
-		for (const auto& platform : platforms) {
-			if (platform.isWithinX(get_position().x) &&
-				platform.getYAtX(get_position().x) > get_position().y) {
-				return platform;
+		for (const auto& walkable : walkables) {
+			if (walkable->isWithinX(get_position().x) &&
+				walkable->getYAtX(get_position().x) > get_position().y) {
+				return walkable;
 			}
 		}
-		return std::nullopt;
+		return nullptr;
 	}
 
 	std::optional<Wall> Player::get_next_wall(const std::vector<Wall>& walls, float distance) {
@@ -353,7 +353,7 @@ namespace Etherfall {
 		return std::nullopt;
 	}
 
-	bool Player::handle_next_state(uint64_t dt, const std::deque<PossibleState>& states, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
+	bool Player::handle_next_state(uint64_t dt, const std::deque<PossibleState>& states, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
 		
 		float distance = m_speed * dt / 1000000;
 		m_velocity += m_gravity * dt / 1000000;
@@ -361,57 +361,57 @@ namespace Etherfall {
 			switch (state)
 			{
 			case Etherfall::PossibleState::IdleRight:
-				if (handle_next_idle_state(dt, true, platforms, climbables)) {
+				if (handle_next_idle_state(dt, true, walkables, climbables)) {
 					m_velocity = 0;
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::IdleLeft:
-				if (handle_next_idle_state(dt, false, platforms, climbables)) {
+				if (handle_next_idle_state(dt, false, walkables, climbables)) {
 					m_velocity = 0;
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::JumpRight: 
-				if (handle_next_jump_state(dt, true, distance, platforms, climbables, walls)) {
+				if (handle_next_jump_state(dt, true, distance, walkables, climbables, walls)) {
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::JumpLeft:
-				if (handle_next_jump_state(dt , false, -1 *distance, platforms, climbables, walls)) {
+				if (handle_next_jump_state(dt , false, -1 *distance, walkables, climbables, walls)) {
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::JumpIdleRight:
-				if (handle_next_jump_state(dt, true, 0, platforms, climbables, walls)) {
+				if (handle_next_jump_state(dt, true, 0, walkables, climbables, walls)) {
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::JumpIdleLeft:
-				if (handle_next_jump_state(dt, false, 0, platforms, climbables, walls)) {
+				if (handle_next_jump_state(dt, false, 0, walkables, climbables, walls)) {
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::RunRight: 
-				if (handle_next_run_state(dt, true, distance, platforms, climbables, walls)) {
+				if (handle_next_run_state(dt, true, distance, walkables, climbables, walls)) {
 					m_velocity = 0;
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::RunLeft :
-				if (handle_next_run_state(dt, false, -1 * distance, platforms, climbables, walls)) {
+				if (handle_next_run_state(dt, false, -1 * distance, walkables, climbables, walls)) {
 					m_velocity = 0;
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::ClimbUp:
-				if (handle_next_climb_up_state(dt, true, -1 * distance, platforms, climbables)) {
+				if (handle_next_climb_up_state(dt, true, -1 * distance, walkables, climbables)) {
 					m_velocity = 0;
 					return true;
 				}
 				break;
 			case Etherfall::PossibleState::ClimbDown:
-				if (handle_next_climb_down_state(dt, true, distance, platforms, climbables)) {
+				if (handle_next_climb_down_state(dt, true, distance, walkables, climbables)) {
 					return true;
 				}
 				break;
@@ -420,7 +420,7 @@ namespace Etherfall {
 				return false;
 			case Etherfall::PossibleState::JumpDownRight:
 			case Etherfall::PossibleState::JumpDownLeft:
-				if (handle_next_jump_down_state(dt, platforms)) {
+				if (handle_next_jump_down_state(dt, walkables)) {
 					return true;
 				}
 				break;
@@ -431,17 +431,17 @@ namespace Etherfall {
 		return false;
 	}
 
-	bool Player::handle_next_idle_state(uint64_t dt, bool is_right, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
+	bool Player::handle_next_idle_state(uint64_t dt, bool is_right, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables) {
 		
 		set_current_animation_state(Animations::Idle, is_right);
-		if (is_on_ground(platforms)) {
+		if (is_on_ground(walkables)) {
 			return true;
 		}
 		set_current_animation_state(Animations::Jump, is_right);
 		return true;
 	}
 
-	bool Player::handle_next_jump_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
+	bool Player::handle_next_jump_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
 
 		if (m_current_animation_state != AnimationState::JumpRight &&
 			m_current_animation_state != AnimationState::JumpLeft) {
@@ -454,9 +454,9 @@ namespace Etherfall {
 			distance = 0;
 		}
 
-		auto platform = get_next_platform(dt, platforms, distance);
-		if (platform) {
-			m_player_sprite->setPosition({ get_position().x + distance, platform->getYAtX(get_position().x + distance) });
+		auto walkable = get_next_walkable(dt, walkables, distance);
+		if (walkable) {
+			m_player_sprite->setPosition({ get_position().x + distance, walkable->getYAtX(get_position().x + distance) });
 			set_current_animation_state(Animations::Idle, is_right);
 			return true;
 		}
@@ -465,16 +465,16 @@ namespace Etherfall {
 		return true;
 	}
 
-	bool Player::handle_next_run_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
+	bool Player::handle_next_run_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
 
 		set_current_animation_state(Animations::Run, is_right);
-		if (const auto platform = is_on_ground(platforms); platform) {
+		if (const auto walkable = is_on_ground(walkables); walkable) {
 			if (auto wall = get_next_wall(walls, distance); wall) {
 				auto distance_from_wall = get_width_size() / 2 * (is_right ? -1 : 1);
-				m_player_sprite->setPosition({ wall->get_x() + distance_from_wall, platform->getYAtX(wall->get_x() + distance_from_wall) });
+				m_player_sprite->setPosition({ wall->get_x() + distance_from_wall, walkable->getYAtX(wall->get_x() + distance_from_wall) });
 			}
 			else {
-				m_player_sprite->setPosition({ get_position().x + distance, platform->getYAtX(get_position().x + distance) });
+				m_player_sprite->setPosition({ get_position().x + distance, walkable->getYAtX(get_position().x + distance) });
 			}
 			m_velocity = 0;
 			return true;
@@ -483,7 +483,7 @@ namespace Etherfall {
 		return true;
 	}
 
-	bool Player::handle_next_climb_up_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
+	bool Player::handle_next_climb_up_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables) {
 
 		if (m_current_animation_state == AnimationState::ClimbRight) {
 			for (const auto& climbable : climbables) {
@@ -492,9 +492,9 @@ namespace Etherfall {
 					return true;
 				}
 			}
-			if (auto platform = get_next_platform(dt, platforms, 0, distance); platform) {
+			if (auto walkable = get_next_walkable(dt, walkables, 0, distance); walkable) {
 				set_current_animation_state(Animations::Idle, is_right);
-				m_player_sprite->setPosition({ get_position().x, platform->getYAtX(get_position().x) });
+				m_player_sprite->setPosition({ get_position().x, walkable->getYAtX(get_position().x) });
 				return true;
 			}
 		}
@@ -508,7 +508,7 @@ namespace Etherfall {
 		return false;
 	}
 
-	bool Player::handle_next_climb_down_state(uint64_t dt, bool is_right, float distance, const std::vector<Platform>& platforms, const std::vector<Climbable>& climbables) {
+	bool Player::handle_next_climb_down_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables) {
 
 		if (m_current_animation_state == AnimationState::ClimbRight) {
 			for (const auto& climbable : climbables) {
@@ -519,9 +519,9 @@ namespace Etherfall {
 				}
 			}
 			
-			if (auto platform = get_next_platform(dt, platforms); platform) {
+			if (auto walkable = get_next_walkable(dt, walkables); walkable) {
 				set_current_animation_state(Animations::Idle, is_right);
-				m_player_sprite->setPosition({ get_position().x, platform->getYAtX(get_position().x) });
+				m_player_sprite->setPosition({ get_position().x, walkable->getYAtX(get_position().x) });
 				m_velocity = 0;
 				return true;
 			}
@@ -541,11 +541,11 @@ namespace Etherfall {
 		return false;
 	}
 
-	bool Player::handle_next_jump_down_state(uint64_t dt, const std::vector<Platform>& platforms) {
+	bool Player::handle_next_jump_down_state(uint64_t dt, const std::vector<std::shared_ptr<Walkable>>& walkables) {
 
-		auto platform = get_below_platform(platforms);
-		if (platform && 
-			platform->getYAtX(get_position().x) - get_position().y < 300) {
+		auto walkable = get_below_walkable(walkables);
+		if (walkable && 
+			walkable->getYAtX(get_position().x) - get_position().y < 300) {
 			set_current_animation_state(Animations::Jump, static_cast<uint32_t>(m_current_animation_state) % 2 == 0);
 			m_player_sprite->move({ 0, 1 });
 			return true;

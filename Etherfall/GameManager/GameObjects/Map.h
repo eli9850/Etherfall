@@ -10,7 +10,7 @@
 #include <optional>
 #include "Portal.h"
 #include "Player.h"
-#include "Platform.h"
+#include "Walkable.h"
 #include "Climbable.h"
 #include "Wall.h"
 
@@ -34,7 +34,7 @@ namespace Etherfall {
 		sf::Vector2u m_background_size;
 		std::unique_ptr<sf::Sprite> m_background_sprite;
 		std::vector<Portal> m_portals;
-		std::vector<Platform> m_platforms;
+		std::vector<std::shared_ptr<Walkable>> m_walkables;
 		std::vector<Climbable> m_climbables;
 		std::vector<Wall> m_walls;
 		std::unique_ptr<Player> m_player;
