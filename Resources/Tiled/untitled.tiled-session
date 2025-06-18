@@ -1,0 +1,132 @@
+{
+    "activeFile": "Backgrounds/Background1.json",
+    "expandedProjectPaths": [
+        "Assets",
+        ".",
+        "Maps",
+        "Backgrounds"
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "Assets/CastleMap.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Assets/Portal.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Assets/Portals.tsx": {
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.25
+        },
+        "Assets/leaf.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        },
+        "Backgrounds/Background1.json": {
+            "scale": 0.33,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 1792.4242424242425,
+                "y": 389.39393939393943
+            }
+        },
+        "Backgrounds/Background1.json#CastleMap": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Backgrounds/Background2.json": {
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 768,
+                "y": 511
+            }
+        },
+        "Backgrounds/Background2.json#CastleMap": {
+            "scaleInDock": 1
+        },
+        "Backgrounds/Background3.json": {
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 768,
+                "y": 511
+            }
+        },
+        "Backgrounds/Background3.json#CastleMap": {
+            "scaleInDock": 1
+        },
+        "Backgrounds/Gemini_Generated_Image_2wdlgk2wdlgk2wdl-removebg-preview (1).tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Backgrounds/layer_01_2048 x 1546.tsx": {
+            "scaleInDock": 0.125
+        },
+        "C:/Users/eli98/personal/projetcs/tiled-Eterfall/PC Computer - Jazz Jackrabbit 2 The Secret Files - Castle Earlong - 1_test.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/Background1.json": {
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 611,
+                "y": 362
+            }
+        },
+        "Maps/Map1.json": {
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 789,
+                "y": -14
+            }
+        },
+        "Maps/PC Computer - Jazz Jackrabbit 2 The Secret Files - Castle Earlong - 1_test.tsx": {
+            "scaleInDock": 1
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/eli98/personal/projetcs/VisualStudio/Etherfall/Resources/Tiled/Assets",
+    "last.imagePath": "C:/Users/eli98/personal/projetcs/VisualStudio/Etherfall/Resources/Tiled/Assets",
+    "openFiles": [
+        "Backgrounds/Background1.json",
+        "Backgrounds/Background2.json",
+        "Backgrounds/Background3.json"
+    ],
+    "project": "untitled.tiled-project",
+    "property.type": "file",
+    "recentFiles": [
+        "Backgrounds/Background3.json",
+        "Backgrounds/Background2.json",
+        "Backgrounds/Background1.json",
+        "Assets/leaf.tsx",
+        "Backgrounds/Gemini_Generated_Image_2wdlgk2wdlgk2wdl-removebg-preview (1).tsx",
+        "Assets/Portal.tsx",
+        "Assets/Portals.tsx",
+        "Assets/CastleMap.tsx",
+        "Maps/Background1.json",
+        "Maps/Map1.json"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    },
+    "tileset.transparentColor": "#000000",
+    "tileset.useTransparentColor": true
+}
