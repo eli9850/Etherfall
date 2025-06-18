@@ -5,17 +5,26 @@
 
 namespace Etherfall {
 
+	struct platformEquation {
+		float a0;
+		float a1;
+		sf::Vector2f range;
+	};
+
 	class Platform final : public Walkable
 	{
 	public:
-		Platform(sf::Vector2f start, sf::Vector2f end);
+		Platform(std::vector<platformEquation> platform);
 		void draw(sf::RenderWindow& window) override;
 		float getYAtX(float x) const override;
 		bool isWithinX(float x) const override;
+		float get_slope(float x, float distance) const override;
 	private:
-		sf::Vector2f m_start;
-		sf::Vector2f m_end;
-		float m_slope;
-		float m_intercept;
+		// TODO: change this to binary search
+		const platformEquation& get_equation(float x) const;
+		
+	private:
+		sf::Vector2f m_range;
+		std::vector<platformEquation> m_equations;
 	};
 }

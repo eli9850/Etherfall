@@ -1,18 +1,33 @@
 #include "Curve.h"
-#include "SFML/Graphics/PrimitiveType.hpp"
+#include <SFML/Graphics/PrimitiveType.hpp>
+#include <boost/config.hpp>
+#include <boost/multiprecision/cpp_dec_float.hpp>
+
+using boost::multiprecision::cpp_dec_float_100;
 
 namespace Etherfall {
 
-	Curve::Curve(std::vector<equation> curve): m_equations(std::move(curve)) {
+	Curve::Curve(std::vector<curveEquation> curve): m_equations(std::move(curve)) {
 		m_range.x = m_equations[0].range.x;
 		m_range.y = m_equations[m_equations.size() - 1].range.y;
 	}
 
 	float Curve::getYAtX(float x) const {
 		const auto& equation = get_equation(x);
-		auto x2 = x * x;
-		auto x3 = x2 * x;
-		return equation.a0 + equation.a1 * x + equation.a2 * x2 + equation.a3 * x3;
+		if (x < m_range.x) {
+			x = m_range.x;
+		} else if (x > m_range.y) {
+			x = m_range.y;
+		}
+		
+		cpp_dec_float_100 x1_100 = x;
+		cpp_dec_float_100 x2_100 = x1_100 * x1_100;
+		cpp_dec_float_100 x3_100 = x2_100 * x1_100;
+		cpp_dec_float_100 result = equation.a0;
+		result += equation.a1 * x1_100;
+		result += equation.a2 * x2_100;
+		result += equation.a3 * x3_100;
+		return result.convert_to<float>();
 	}
 
 	bool Curve::isWithinX(float x) const {
@@ -22,13 +37,13 @@ namespace Etherfall {
 	void Curve::draw(sf::RenderWindow& window) {
 		
 		std::vector<sf::VertexArray> curves;
-		for (const auto& e : m_equations) {
-			int samples = 10;
-			sf::VertexArray curve(sf::PrimitiveType::LineStrip, samples);
+		int samples = 10;
+		sf::VertexArray curve(sf::PrimitiveType::LineStrip, samples);
 
-			float step = (m_range.y - m_range.x) / (samples - 1);
+		for (const auto& e : m_equations) {
+			float step = (e.range.y - e.range.x) / (samples - 1);
 			for (int i = 0; i < samples; ++i) {
-				float x = m_range.x + i * step;
+				float x = e.range.x + i * step;
 				float y = getYAtX(x);
 				curve[i] = sf::Vertex(sf::Vector2f(x, y), sf::Color::Cyan);
 			}
@@ -38,7 +53,7 @@ namespace Etherfall {
 			window.draw(curve);
 	}
 
-	const equation& Curve::get_equation(float x) const {
+	const curveEquation& Curve::get_equation(float x) const {
 		
 		if (x <= m_range.x) {
 			return m_equations[0];
@@ -54,5 +69,14 @@ namespace Etherfall {
 		}
 		
 		throw std::runtime_error("invalid equation");
+	}
+
+	float Curve::get_slope(float x, float distance) const {
+
+		auto y = getYAtX(x);
+		auto x2 = x + distance;
+		auto y2 = getYAtX(x2);
+		auto slope = (y - y2) / (x - x2);
+		return slope;
 	}
 }

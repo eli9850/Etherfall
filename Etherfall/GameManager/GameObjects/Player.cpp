@@ -23,7 +23,7 @@ namespace Etherfall {
 			m_player_sprite->setPosition(*position);
 		}
 		else {
-			m_player_sprite->setPosition({ 150, 150 });
+			m_player_sprite->setPosition({ 850, 150 });
 		}
 		
 
@@ -355,6 +355,7 @@ namespace Etherfall {
 
 	bool Player::handle_next_state(uint64_t dt, const std::deque<PossibleState>& states, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls) {
 		
+		dt = std::min(static_cast<uint64_t>(100000), dt);
 		float distance = m_speed * dt / 1000000;
 		m_velocity += m_gravity * dt / 1000000;
 		for (const auto& state : states) {
@@ -474,7 +475,9 @@ namespace Etherfall {
 				m_player_sprite->setPosition({ wall->get_x() + distance_from_wall, walkable->getYAtX(wall->get_x() + distance_from_wall) });
 			}
 			else {
-				m_player_sprite->setPosition({ get_position().x + distance, walkable->getYAtX(get_position().x + distance) });
+				auto slope = walkable->get_slope(get_position().x, distance);
+				distance += 100 * slope / (std::pow(1 + slope * slope, 0.5)) * dt / 1000000;
+				m_player_sprite->setPosition(walkable->get_next_position(get_position().x, distance));
 			}
 			m_velocity = 0;
 			return true;

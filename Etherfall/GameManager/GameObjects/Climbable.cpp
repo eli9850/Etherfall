@@ -1,5 +1,5 @@
 #include "Climbable.h"
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 #include "GameManager/ResourceManager/ResourceManager.h"
 
 namespace Etherfall {
