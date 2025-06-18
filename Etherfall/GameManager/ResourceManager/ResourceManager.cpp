@@ -64,7 +64,7 @@ namespace Etherfall {
 			m_objects_details.put(json_file_path, nlohmann::json::parse(map_details_file));
 			return m_objects_details.get(json_file_path);
 		}
-		catch (const nlohmann::json::parse_error& e) {
+		catch (const nlohmann::json::parse_error&) {
 			throw std::runtime_error(std::format("Could not parse file {}", json_file_path.string()));
 		}
 	}
