@@ -16,7 +16,7 @@ namespace Etherfall::Utilities {
     public:
         explicit LRUCache(size_t capacity) : m_capacity(capacity) {}
 
-        const ValueType& get(const KeyType& key) {
+        ValueType& get(const KeyType& key) {
             auto it = m_cache.find(key);
             if (it == m_cache.end()) {
                 throw std::out_of_range("Key not found in cache.");

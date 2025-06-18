@@ -11,7 +11,9 @@ namespace Etherfall {
 		m_background_textures(10), 
 		m_portal_textures(3),  
 		m_player_textures(3),
-		m_objects_details(20){}
+		m_parallax_textures(20),
+		m_objects_details(20)
+		{}
 
 	std::filesystem::path ResourceManager::get_maps_details_dir() {
 		static auto map_dir = m_resource_dir / "Details" / "Maps";
@@ -69,17 +71,22 @@ namespace Etherfall {
 	
 	std::filesystem::path ResourceManager::get_background_path(uint32_t background_id) {
 		static auto background_path = m_resource_dir / "Backgrounds";
-		return background_path / (std::string("Background") + std::to_string(background_id) + ".jpg");
+		return background_path / (std::string("Background") + std::to_string(background_id) + ".png");
 	}
 
 	std::filesystem::path ResourceManager::get_portal_path(uint32_t portal_id) {
 		static auto portal_path = m_resource_dir / "Portals";
-		return portal_path / (std::string("Portal") + std::to_string(portal_id) + ".jpg");
+		return portal_path / (std::string("Portal") + std::to_string(portal_id) + ".png");
 	}
 
 	std::filesystem::path ResourceManager::get_player_path(uint32_t player_id) {
 		static auto player_path = m_resource_dir / "Players";
-		return player_path / (std::string("Player") + std::to_string(player_id) + ".jpg");
+		return player_path / (std::string("Player") + std::to_string(player_id) + ".png");
+	}
+
+	std::filesystem::path ResourceManager::get_parallax_path(uint32_t parallax_id) {
+		static auto parallax_path = m_resource_dir / "Parallaxs";
+		return parallax_path / (std::string("Parallax") + std::to_string(parallax_id) + ".png");
 	}
 
 	const sf::Texture& ResourceManager::add_background(uint32_t background_id) {
@@ -112,6 +119,16 @@ namespace Etherfall {
 		return m_player_textures.get(player_id);
 	}
 
+	sf::Texture& ResourceManager::add_parallax(uint32_t parallax_id) {
+		sf::Texture parallax;
+		const auto parallax_path = get_parallax_path(parallax_id);
+		if (!parallax.loadFromFile(parallax_path)) {
+			throw std::runtime_error(std::format("Could not load texture from file {}", parallax_path.string()));
+		}
+		m_parallax_textures.put(parallax_id, std::move(parallax));
+		return m_parallax_textures.get(parallax_id);
+	}
+
 	const sf::Texture& ResourceManager::get_background_texture(uint32_t background_id) {
 		if (!m_background_textures.exists(background_id)) {
 			return add_background(background_id);
@@ -131,6 +148,13 @@ namespace Etherfall {
 			return add_player(player_id);
 		}
 		return m_player_textures.get(player_id);
+	}
+
+	sf::Texture& ResourceManager::get_parallax_texture(uint32_t parallax_id) {
+		if (!m_parallax_textures.exists(parallax_id)) {
+			return add_parallax(parallax_id);
+		}
+		return m_parallax_textures.get(parallax_id);
 	}
 
 	std::unique_ptr<ResourceManager> g_resource_manager = nullptr;
