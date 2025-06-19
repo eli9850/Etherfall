@@ -1,10 +1,10 @@
 {
     "activeFile": "Backgrounds/Background1.json",
     "expandedProjectPaths": [
-        "Assets",
         ".",
-        "Maps",
-        "Backgrounds"
+        "Assets",
+        "Backgrounds",
+        "Maps"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -26,10 +26,10 @@
         },
         "Backgrounds/Background1.json": {
             "scale": 0.33,
-            "selectedLayer": 5,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 1792.4242424242425,
-                "y": 389.39393939393943
+                "y": 453.03030303030295
             }
         },
         "Backgrounds/Background1.json#CastleMap": {

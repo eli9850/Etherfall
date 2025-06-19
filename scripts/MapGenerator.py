@@ -144,6 +144,8 @@ def get_parallax_images(tiled_map):
     parallaxs_data = [layer for layer in tiled_map['layers'] if layer['type'] == 'imagelayer']
     parallaxs = []
     for parallax in parallaxs_data:
+        if not parallax["visible"]:
+            continue
         x = parallax["offsetx"] if "offsetx" in parallax else 0
         y = parallax["offsety"] if "offsety" in parallax else 0
         parallaxs.append({"Pos": [x, y],

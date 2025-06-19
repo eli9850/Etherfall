@@ -3,11 +3,12 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 #include <filesystem>
 #include <memory>
 #include <vector>
 #include <optional>
+#include "Parallax.h"
 #include "Portal.h"
 #include "Player.h"
 #include "Walkable.h"
@@ -33,6 +34,7 @@ namespace Etherfall {
 		sf::Vector2u m_window_size;
 		sf::Vector2u m_background_size;
 		std::unique_ptr<sf::Sprite> m_background_sprite;
+		std::unique_ptr<Parallax> m_parallax;
 		std::vector<Portal> m_portals;
 		std::vector<std::shared_ptr<Walkable>> m_walkables;
 		std::vector<Climbable> m_climbables;

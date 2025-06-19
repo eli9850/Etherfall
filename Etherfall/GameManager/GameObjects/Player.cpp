@@ -446,7 +446,14 @@ namespace Etherfall {
 
 		if (m_current_animation_state != AnimationState::JumpRight &&
 			m_current_animation_state != AnimationState::JumpLeft) {
-			m_velocity = -400;
+			if (m_current_animation_state == AnimationState::ClimbRight ||
+				m_current_animation_state == AnimationState::ClimbLeft) {
+				m_velocity = -300;
+			}
+			else {
+				m_velocity = -400;
+			}
+			
 		}
 		set_current_animation_state(Animations::Jump, is_right);
 
