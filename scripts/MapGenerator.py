@@ -102,7 +102,7 @@ def get_objects_from_map(map_data):
         if layer['name'] == 'objects':
             map_objects = layer['objects']
             break
-    objects = {'Platforms': [], 'Climbables': [], 'Walls': [], 'Curves': {}, "Portals": []}
+    objects = {'Platforms': [], 'Climbables': [], 'Walls': [], 'Curves': {}, "Portals": [], "NPCs": []}
     curves = {}
     platforms = []
     for map_object in map_objects:
@@ -128,9 +128,18 @@ def get_objects_from_map(map_data):
                                     "Size": int(map_object['polyline'][1]['y'])})
         elif map_object['name'].startswith('portal'):
             map_id = int(map_object['name'][len('portal'):])
-            objects['Portals'].append({"PortalID": 1,
+            properties = map_object['properties']
+            for prop in properties:
+                if prop['name'] == 'PortalID':
+                    portal_id = prop['value']
+                    break
+            objects['Portals'].append({"PortalID": portal_id,
                                        "Pos": [int(map_object['x']), int(map_object['y'])],
                                        "MapID": map_id})
+        elif map_object['name'].startswith('NPC'):
+            npc_id = int(map_object['name'][len('NPC'):])
+            objects['NPCs'].append({"NPC_ID": npc_id,
+                                   "Pos": [int(map_object['x']), int(map_object['y'])]})
 
     for key, curve in curves.items():
         curve_equations = catmull_rom_equations(curve)
@@ -162,6 +171,7 @@ def modify_map_objects(map_details, tiled_map):
     map_details['Climbables'] = objects['Climbables']
     map_details['Curves'] = objects['Curves']
     map_details['Portals'] = objects['Portals']
+    map_details['NPCs'] = objects['NPCs']
     map_details['Parallax'] = get_parallax_images(tiled_map)
 
 

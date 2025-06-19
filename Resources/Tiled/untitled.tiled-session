@@ -12,6 +12,10 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "Assets/NPC1.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Assets/Portal.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -25,11 +29,14 @@
             "scaleInEditor": 1.5
         },
         "Backgrounds/Background1.json": {
-            "scale": 0.33,
-            "selectedLayer": 2,
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 0.75,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 1792.4242424242425,
-                "y": 453.03030303030295
+                "x": 1720.6666666666665,
+                "y": 205.33333333333337
             }
         },
         "Backgrounds/Background1.json#CastleMap": {
@@ -43,8 +50,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 768,
-                "y": 511
+                "x": 1371,
+                "y": 330
             }
         },
         "Backgrounds/Background2.json#CastleMap": {
@@ -55,16 +62,20 @@
                 6
             ],
             "scale": 0.5,
-            "selectedLayer": 0,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 768,
-                "y": 511
+                "x": 1371,
+                "y": 330
             }
         },
         "Backgrounds/Background3.json#CastleMap": {
             "scaleInDock": 1
         },
         "Backgrounds/Gemini_Generated_Image_2wdlgk2wdlgk2wdl-removebg-preview (1).tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Backgrounds/NPC1.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
@@ -110,6 +121,8 @@
     "project": "untitled.tiled-project",
     "property.type": "file",
     "recentFiles": [
+        "Backgrounds/NPC1.tsx",
+        "Assets/NPC1.tsx",
         "Backgrounds/Background3.json",
         "Backgrounds/Background2.json",
         "Backgrounds/Background1.json",
@@ -124,8 +137,8 @@
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 32,
-        "width": 32
+        "height": 150,
+        "width": 150
     },
     "tileset.transparentColor": "#000000",
     "tileset.useTransparentColor": true

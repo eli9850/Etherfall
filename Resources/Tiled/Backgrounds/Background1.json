@@ -65,6 +65,21 @@
          "y":0
         }, 
         {
+         "id":25,
+         "image":"..\/..\/Parallaxs\/parallax4.png",
+         "imageheight":300,
+         "imagewidth":300,
+         "name":"back",
+         "offsetx":1320.26,
+         "offsety":142.742424242424,
+         "opacity":1,
+         "parallaxx":0.1,
+         "type":"imagelayer",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "chunks":[
                 {
                  "data":"eJxjYBgFQwHwADELGhYeQuaPgsEJAMp4AF8=",
@@ -653,6 +668,12 @@
                  "height":200,
                  "id":135,
                  "name":"portal3",
+                 "properties":[
+                        {
+                         "name":"PortalID",
+                         "type":"int",
+                         "value":1
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -665,6 +686,12 @@
                  "height":200,
                  "id":136,
                  "name":"portal2",
+                 "properties":[
+                        {
+                         "name":"PortalID",
+                         "type":"int",
+                         "value":1
+                        }],
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -944,6 +971,18 @@
                  "width":0,
                  "x":287.5,
                  "y":253
+                }, 
+                {
+                 "gid":663,
+                 "height":150,
+                 "id":177,
+                 "name":"NPC1",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":150,
+                 "x":383.333333333333,
+                 "y":54
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -951,8 +990,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":25,
- "nextobjectid":170,
+ "nextlayerid":26,
+ "nextobjectid":178,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.11.2",
@@ -979,6 +1018,10 @@
         {
          "firstgid":662,
          "source":"..\/Assets\/leaf.tsx"
+        }, 
+        {
+         "firstgid":663,
+         "source":"..\/Assets\/NPC1.tsx"
         }],
  "tilewidth":32,
  "type":"map",

@@ -48,6 +48,9 @@
     <ClCompile Include="GameManager\GameObjects\Parallax.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameManager\GameObjects\NPC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager\GameManager.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameManager\GameObjects\Parallax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager\GameObjects\NPC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

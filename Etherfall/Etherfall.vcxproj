@@ -162,6 +162,7 @@
     <ClCompile Include="GameManager\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="GameManager\GameObjects\Platform.cpp" />
     <ClCompile Include="GameManager\GameObjects\Parallax.cpp" />
+    <ClCompile Include="GameManager\GameObjects\NPC.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="GameManager\GameObjects\Wall.cpp" />
   </ItemGroup>
@@ -175,6 +176,7 @@
     <ClInclude Include="GameManager\ResourceManager\ResourceManager.h" />
     <ClInclude Include="GameManager\GameObjects\Platform.h" />
     <ClInclude Include="GameManager\GameObjects\Parallax.h" />
+    <ClInclude Include="GameManager\GameObjects\NPC.h" />
     <ClInclude Include="Utilities\LRUCache\LRUCache.h" />
     <ClInclude Include="GameManager\GameObjects\Wall.h" />
     <ClInclude Include="GameManager\GameObjects\Walkable.h" />

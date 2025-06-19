@@ -58,6 +58,9 @@ namespace Etherfall {
 			m_walls.push_back(Wall({ wall.at("Pos")[0], wall.at("Pos")[1] },
 				wall.at("Size")));
 		}
+		for (const auto& npc : map_details.at("NPCs")) {
+			m_npcs.push_back(NPC(npc.at("NPC_ID"), { npc.at("Pos")[0], npc.at("Pos")[1] }));
+		}
 		m_walls.push_back(Wall({ 0,0 }, static_cast<float>(m_background_size.y)));
 		m_walls.push_back(Wall({ static_cast<float>(m_background_size.x),0 }, static_cast<float>(m_background_size.y)));
 		m_player = std::make_unique<Player>(1, player_position);
@@ -120,6 +123,9 @@ namespace Etherfall {
 		for (auto& portal : m_portals) {
 			portal.draw(window);
 		}
+		for (auto& npc : m_npcs) {
+			npc.draw(window);
+		}
 		/*for (auto& walkable : m_walkables) {
 			walkable->draw(window);
 		}
@@ -135,4 +141,14 @@ namespace Etherfall {
 	uint32_t Map::get_map_id() const {
 		return m_map_id;
 	}
+
+	NPC* Map::get_clicked_npc(const sf::RenderWindow& window, const sf::Vector2i& mouse_position) {
+		for (auto& npc : m_npcs) {
+			if (npc.is_clicked(window, mouse_position)) {
+				return &npc;
+			}
+		}
+		return nullptr;
+	}
+
 }

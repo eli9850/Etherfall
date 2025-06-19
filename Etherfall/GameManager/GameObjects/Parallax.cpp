@@ -12,7 +12,8 @@ namespace Etherfall {
 			texture.setRepeated(is_repeated);
 			parallax_details.image = std::make_unique<sf::Sprite>(texture);
 			sf::Vector2f pos = { parallax.at("Pos")[0], parallax.at("Pos")[1] };
-			parallax_details.image->setTextureRect({ {0, 0}, {(int)map_size.x, (int)texture.getSize().y}});
+			parallax_details.image->setTextureRect({ {0, 0}, 
+				{static_cast<int>(map_size.x), static_cast<int>(texture.getSize().y)}});
 			if (is_repeated) {
 				parallax_details.image->setPosition({0, pos.y});
 			}

@@ -14,6 +14,7 @@
 #include "Walkable.h"
 #include "Climbable.h"
 #include "Wall.h"
+#include "NPC.h"
 
 
 namespace Etherfall {
@@ -25,6 +26,7 @@ namespace Etherfall {
 		void handle_frame(uint64_t dt);
 		void draw(sf::RenderWindow& window);
 		uint32_t get_map_id() const;
+		NPC* get_clicked_npc(const sf::RenderWindow& window, const sf::Vector2i& mouse_position);
 
 	private:
 		void setView();
@@ -39,6 +41,7 @@ namespace Etherfall {
 		std::vector<std::shared_ptr<Walkable>> m_walkables;
 		std::vector<Climbable> m_climbables;
 		std::vector<Wall> m_walls;
+		std::vector<NPC> m_npcs;
 		std::unique_ptr<Player> m_player;
 		sf::View m_view;
 	};

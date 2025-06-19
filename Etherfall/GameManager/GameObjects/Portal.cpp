@@ -18,8 +18,8 @@ namespace Etherfall {
 		m_number_of_frames = portal_details.at("FrameNumber");
 		m_frame_size = { portal_details.at("FrameSize")[0], portal_details.at("FrameSize")[1] };
 		m_portal_sprite->setTextureRect({ {0, 0}, m_frame_size });
-		sf::Vector2f scale{portal_details.at("Size")[0] / (float)m_portal_sprite->getTextureRect().size.x,
-			portal_details.at("Size")[1] / (float)m_portal_sprite->getTextureRect().size.y};
+		sf::Vector2f scale{portal_details.at("Size")[0] / static_cast<float>(m_portal_sprite->getTextureRect().size.x),
+			portal_details.at("Size")[1] / static_cast<float>(m_portal_sprite->getTextureRect().size.y)};
 		m_portal_sprite->setScale(scale);
 
 		m_enter_position.x = position.x + static_cast<float>(portal_details.at("EnterPosition")[0]) * portal_details.at("Size")[0];

@@ -649,7 +649,7 @@ namespace Etherfall {
 	void Player::set_animation(Animations animation, uint32_t frame_number) {
 		const auto& new_animation = m_animations[animation][frame_number];
 		m_player_sprite->setTextureRect(new_animation);
-		m_player_sprite->setOrigin({ (float)new_animation.size.x / 2, (float)new_animation.size.y });
+		m_player_sprite->setOrigin({ static_cast<float>(new_animation.size.x / 2), static_cast<float>(new_animation.size.y) });
 	}
 
 	void Player::draw(sf::RenderWindow& window) {

@@ -12,7 +12,8 @@ namespace Etherfall {
 		m_portal_textures(3),  
 		m_player_textures(3),
 		m_parallax_textures(20),
-		m_objects_details(20)
+		m_npc_textures(30),
+		m_objects_details(50)
 		{}
 
 	std::filesystem::path ResourceManager::get_maps_details_dir() {
@@ -55,6 +56,16 @@ namespace Etherfall {
 		return get_json_from_file(climbable_details_path);
 	}
 
+	std::filesystem::path ResourceManager::get_npcs_details_dir() {
+		static auto climbable_dir = m_resource_dir / "Details" / "NPCs";
+		return climbable_dir;
+	}
+
+	const nlohmann::json& ResourceManager::get_npc_details_by_id(uint32_t npc_id) {
+		const auto npc_details_path = get_npcs_details_dir() / (std::string("NPC") + std::to_string(npc_id) + ".json");
+		return get_json_from_file(npc_details_path);
+	}
+
 	const nlohmann::json& ResourceManager::get_json_from_file(const std::filesystem::path& json_file_path) {
 		std::ifstream map_details_file(json_file_path);
 		if (!map_details_file) {
@@ -87,6 +98,11 @@ namespace Etherfall {
 	std::filesystem::path ResourceManager::get_parallax_path(uint32_t parallax_id) {
 		static auto parallax_path = m_resource_dir / "Parallaxs";
 		return parallax_path / (std::string("Parallax") + std::to_string(parallax_id) + ".png");
+	}
+
+	std::filesystem::path ResourceManager::get_npc_path(uint32_t npc_id) {
+		static auto npc_path = m_resource_dir / "NPCs";
+		return npc_path / (std::string("NPC") + std::to_string(npc_id) + ".png");
 	}
 
 	const sf::Texture& ResourceManager::add_background(uint32_t background_id) {
@@ -129,6 +145,16 @@ namespace Etherfall {
 		return m_parallax_textures.get(parallax_id);
 	}
 
+	const sf::Texture& ResourceManager::add_npc(uint32_t npc_id) {
+		sf::Texture npc;
+		const auto npc_path = get_npc_path(npc_id);
+		if (!npc.loadFromFile(npc_path)) {
+			throw std::runtime_error(std::format("Could not load texture from file {}", npc_path.string()));
+		}
+		m_npc_textures.put(npc_id, std::move(npc));
+		return m_npc_textures.get(npc_id);
+	}
+
 	const sf::Texture& ResourceManager::get_background_texture(uint32_t background_id) {
 		if (!m_background_textures.exists(background_id)) {
 			return add_background(background_id);
@@ -155,6 +181,13 @@ namespace Etherfall {
 			return add_parallax(parallax_id);
 		}
 		return m_parallax_textures.get(parallax_id);
+	}
+
+	const sf::Texture& ResourceManager::get_npc_texture(uint32_t npc_id) {
+		if (!m_npc_textures.exists(npc_id)) {
+			return add_npc(npc_id);
+		}
+		return m_npc_textures.get(npc_id);
 	}
 
 	std::unique_ptr<ResourceManager> g_resource_manager = nullptr;

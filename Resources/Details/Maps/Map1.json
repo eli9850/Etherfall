@@ -439,6 +439,33 @@
       "Factor": 0.1,
       "Image": 4,
       "Repeated": false
+    },
+    {
+      "Pos": [
+        1320.26,
+        142.742424242424
+      ],
+      "Factor": 0.1,
+      "Image": 4,
+      "Repeated": false
+    }
+  ],
+  "NPC": [
+    {
+      "NPC_ID": 1,
+      "Pos": [
+        1590,
+        426
+      ]
+    }
+  ],
+  "NPCs": [
+    {
+      "NPC_ID": 1,
+      "Pos": [
+        383,
+        54
+      ]
     }
   ]
 }
