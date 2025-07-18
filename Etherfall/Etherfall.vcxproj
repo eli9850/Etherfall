@@ -122,7 +122,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Libraries\SFML-3.0.1\bin\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;winmm.lib;opengl32.lib;gdi32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;sfml-network-s-d.lib;winmm.lib;opengl32.lib;gdi32.lib;ws2_32.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>python $(SolutionDir)scripts\MapGenerator.py</Command>
@@ -146,13 +146,15 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Libraries\SFML-3.0.1\bin\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;winmm.lib;opengl32.lib;gdi32.lib;ws2_32.lib;Advapi32.lib;kernel32.lib;user32.lib</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;sfml-audio-s.lib;sfml-network-s.lib;winmm.lib;opengl32.lib;gdi32.lib;ws2_32.lib;Advapi32.lib;kernel32.lib;user32.lib;freetype.lib</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>python $(SolutionDir)scripts\MapGenerator.py</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameManager\UIObjects\Button.cpp" />
+    <ClCompile Include="GameManager\UIObjects\Dialogue.cpp" />
     <ClCompile Include="GameManager\GameObjects\Curve.cpp" />
     <ClCompile Include="GameManager\GameObjects\Climbable.cpp" />
     <ClCompile Include="GameManager\GameManager.cpp" />
@@ -163,10 +165,15 @@
     <ClCompile Include="GameManager\GameObjects\Platform.cpp" />
     <ClCompile Include="GameManager\GameObjects\Parallax.cpp" />
     <ClCompile Include="GameManager\GameObjects\NPC.cpp" />
+    <ClCompile Include="GameManager\LogicManager.cpp" />
+    <ClCompile Include="GameManager\SFMLObjects\RoundedRectangle.cpp" />
+    <ClCompile Include="GameManager\GameObjects\Monster.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="GameManager\GameObjects\Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameManager\UIObjects\Button.h" />
+    <ClInclude Include="GameManager\UIObjects\Dialogue.h" />
     <ClInclude Include="GameManager\GameObjects\Curve.h" />
     <ClInclude Include="GameManager\GameObjects\Climbable.h" />
     <ClInclude Include="GameManager\GameManager.h" />
@@ -177,6 +184,9 @@
     <ClInclude Include="GameManager\GameObjects\Platform.h" />
     <ClInclude Include="GameManager\GameObjects\Parallax.h" />
     <ClInclude Include="GameManager\GameObjects\NPC.h" />
+    <ClInclude Include="GameManager\LogicManager.h" />
+    <ClInclude Include="GameManager\SFMLObjects\RoundedRectangle.h" />
+    <ClInclude Include="GameManager\GameObjects\Monster.h" />
     <ClInclude Include="Utilities\LRUCache\LRUCache.h" />
     <ClInclude Include="GameManager\GameObjects\Wall.h" />
     <ClInclude Include="GameManager\GameObjects\Walkable.h" />

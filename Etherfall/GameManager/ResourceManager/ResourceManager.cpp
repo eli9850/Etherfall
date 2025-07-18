@@ -13,8 +13,13 @@ namespace Etherfall {
 		m_player_textures(3),
 		m_parallax_textures(20),
 		m_npc_textures(30),
-		m_objects_details(50)
-		{}
+		m_objects_details(50) 
+	{
+		std::filesystem::path font_path = m_resource_dir / "Fonts" / "ARIAL.TTF";
+		if (!m_font.openFromFile(font_path)) {
+			throw std::runtime_error(std::format("Could not load font from file {}", font_path.string()));
+		}
+	}
 
 	std::filesystem::path ResourceManager::get_maps_details_dir() {
 		static auto map_dir = m_resource_dir / "Details" / "Maps";
@@ -190,6 +195,10 @@ namespace Etherfall {
 		return m_npc_textures.get(npc_id);
 	}
 
+	const sf::Font& ResourceManager::get_font() {
+		return m_font;
+	}
+	
 	std::unique_ptr<ResourceManager> g_resource_manager = nullptr;
 }
 

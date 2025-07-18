@@ -5,6 +5,7 @@
 #include <memory>
 #include <nlohmann/json.hpp>
 #include "Utilities/LRUCache/LRUCache.h"
+#include <SFML/Graphics/Font.hpp>
 
 namespace Etherfall {
 
@@ -27,6 +28,7 @@ namespace Etherfall {
 		const sf::Texture& get_player_texture(uint32_t player_id);
 		sf::Texture& get_parallax_texture(uint32_t parallax_id);
 		const sf::Texture& get_npc_texture(uint32_t npc_id);
+		const sf::Font& get_font();
 	private:
 		const nlohmann::json& get_json_from_file(const std::filesystem::path& json_file_path);
 		std::filesystem::path get_background_path(uint32_t background_id);
@@ -47,6 +49,7 @@ namespace Etherfall {
 		Utilities::LRUCache<uint32_t, sf::Texture> m_parallax_textures;
 		Utilities::LRUCache<uint32_t, sf::Texture> m_npc_textures;
 		Utilities::LRUCache<std::filesystem::path, nlohmann::json> m_objects_details;
+		sf::Font m_font;
 	};
 
 	extern std::unique_ptr<ResourceManager> g_resource_manager;
