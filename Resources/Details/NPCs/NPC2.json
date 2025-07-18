@@ -1,0 +1,13 @@
+{
+	"NPC_ID":2,
+	"Name": "Esdfasddfgli",
+	"Text": ["hello I'm Eli, Welcome to Etherfall", "This is the first dialogue in the game\nhope you like it :)", "Lets test it"],
+	"FrameSize":[1080,1080],
+	"FrameNumber":1,
+	"Rows":1,
+	"FrameDuration":50000,
+	"Size": [
+		130,
+		130
+	]
+}

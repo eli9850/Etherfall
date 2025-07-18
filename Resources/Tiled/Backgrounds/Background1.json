@@ -8,8 +8,8 @@
          "imageheight":1546,
          "imagewidth":2048,
          "name":"back",
-         "offsetx":-13430.88,
-         "offsety":1.83333333333331,
+         "offsetx":-13413.5466666667,
+         "offsety":0,
          "opacity":1,
          "repeatx":true,
          "type":"imagelayer",
@@ -643,27 +643,6 @@
                  "y":515.25
                 }, 
                 {
-                 "height":0,
-                 "id":120,
-                 "name":"wall1",
-                 "polyline":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":0,
-                         "y":160
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":416,
-                 "y":384
-                },
-            
-                {
                  "gid":661,
                  "height":200,
                  "id":135,
@@ -680,7 +659,8 @@
                  "width":200,
                  "x":250,
                  "y":360
-                }, 
+                },
+            
                 {
                  "gid":661,
                  "height":200,
@@ -866,8 +846,7 @@
                  "width":0,
                  "x":1120.96875,
                  "y":373.96875
-                },
-            
+                }, 
                 {
                  "height":0,
                  "id":152,
@@ -879,7 +858,8 @@
                  "width":0,
                  "x":1143.9375,
                  "y":395.953125
-                }, 
+                },
+            
                 {
                  "height":0,
                  "id":153,
@@ -954,35 +934,63 @@
                 }, 
                 {
                  "height":0,
-                 "id":169,
-                 "name":"wall2",
-                 "polyline":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":0,
-                         "y":160
-                        }],
+                 "id":179,
+                 "name":"player",
+                 "point":true,
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":287.5,
-                 "y":253
+                 "x":858.666666666667,
+                 "y":325.333333333333
+                }, 
+                {
+                 "height":0,
+                 "id":180,
+                 "name":"player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":126.666666666667,
+                 "y":186.666666666667
+                }, 
+                {
+                 "height":0,
+                 "id":181,
+                 "name":"player",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1538.66666666667,
+                 "y":368
                 }, 
                 {
                  "gid":663,
                  "height":150,
-                 "id":177,
+                 "id":185,
                  "name":"NPC1",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":150,
-                 "x":383.333333333333,
-                 "y":54
+                 "x":452.083333333333,
+                 "y":394.583333333333
+                }, 
+                {
+                 "gid":664,
+                 "height":130,
+                 "id":186,
+                 "name":"NPC2",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":130,
+                 "x":334.401515151515,
+                 "y":64.060606060606
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -991,7 +999,7 @@
          "y":0
         }],
  "nextlayerid":26,
- "nextobjectid":178,
+ "nextobjectid":187,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.11.2",
@@ -1022,6 +1030,10 @@
         {
          "firstgid":663,
          "source":"..\/Assets\/NPC1.tsx"
+        }, 
+        {
+         "firstgid":664,
+         "source":"..\/Assets\/NPC2.tsx"
         }],
  "tilewidth":32,
  "type":"map",

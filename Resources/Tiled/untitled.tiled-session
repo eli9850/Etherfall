@@ -1,8 +1,8 @@
 {
-    "activeFile": "Backgrounds/Background1.json",
+    "activeFile": "Backgrounds/Background3.json",
     "expandedProjectPaths": [
-        ".",
         "Assets",
+        ".",
         "Backgrounds",
         "Maps"
     ],
@@ -13,8 +13,13 @@
             "scaleInEditor": 1
         },
         "Assets/NPC1.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "Assets/NPC2.tsx": {
+            "scaleInDock": 0.0625,
+            "scaleInEditor": 0.33
         },
         "Assets/Portal.tsx": {
             "scaleInDock": 1,
@@ -35,8 +40,8 @@
             "scale": 0.75,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 1720.6666666666665,
-                "y": 205.33333333333337
+                "x": 547.3333333333333,
+                "y": 478.6666666666666
             }
         },
         "Backgrounds/Background1.json#CastleMap": {
@@ -50,8 +55,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1371,
-                "y": 330
+                "x": 767,
+                "y": 510
             }
         },
         "Backgrounds/Background2.json#CastleMap": {
@@ -64,8 +69,8 @@
             "scale": 0.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1371,
-                "y": 330
+                "x": 767,
+                "y": 510
             }
         },
         "Backgrounds/Background3.json#CastleMap": {
@@ -116,30 +121,32 @@
     "openFiles": [
         "Backgrounds/Background1.json",
         "Backgrounds/Background2.json",
-        "Backgrounds/Background3.json"
+        "Backgrounds/Background3.json",
+        "Assets/Portal.tsx",
+        "Assets/NPC1.tsx"
     ],
     "project": "untitled.tiled-project",
     "property.type": "file",
     "recentFiles": [
-        "Backgrounds/NPC1.tsx",
-        "Assets/NPC1.tsx",
-        "Backgrounds/Background3.json",
-        "Backgrounds/Background2.json",
         "Backgrounds/Background1.json",
+        "Backgrounds/Background2.json",
+        "Assets/NPC1.tsx",
+        "Assets/Portal.tsx",
+        "Backgrounds/Background3.json",
+        "Assets/NPC2.tsx",
+        "Backgrounds/NPC1.tsx",
         "Assets/leaf.tsx",
         "Backgrounds/Gemini_Generated_Image_2wdlgk2wdlgk2wdl-removebg-preview (1).tsx",
-        "Assets/Portal.tsx",
         "Assets/Portals.tsx",
         "Assets/CastleMap.tsx",
-        "Maps/Background1.json",
-        "Maps/Map1.json"
+        "Maps/Background1.json"
     ],
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 150,
-        "width": 150
+        "height": 1080,
+        "width": 1080
     },
-    "tileset.transparentColor": "#000000",
+    "tileset.transparentColor": "#ffffff",
     "tileset.useTransparentColor": true
 }

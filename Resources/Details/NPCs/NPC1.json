@@ -1,6 +1,8 @@
 {
 	"NPC_ID":1,
-	"FrameSize":[150,150],
+	"Name": "KiKi",
+	"Text": ["hello I'm KiKi, Welcome to Etherfall", "This is the first dialogue in the game\nhope you like it :)"],
+	"FrameSize":[1080,1080],
 	"FrameNumber":1,
 	"Rows":1,
 	"FrameDuration":50000,

@@ -102,7 +102,7 @@ def get_objects_from_map(map_data):
         if layer['name'] == 'objects':
             map_objects = layer['objects']
             break
-    objects = {'Platforms': [], 'Climbables': [], 'Walls': [], 'Curves': {}, "Portals": [], "NPCs": []}
+    objects = {'Platforms': [], 'Climbables': [], 'Walls': [], 'Curves': {}, "Portals": [], "NPCs": [], "PlayerPositions": []}
     curves = {}
     platforms = []
     for map_object in map_objects:
@@ -140,6 +140,8 @@ def get_objects_from_map(map_data):
             npc_id = int(map_object['name'][len('NPC'):])
             objects['NPCs'].append({"NPC_ID": npc_id,
                                    "Pos": [int(map_object['x']), int(map_object['y'])]})
+        elif map_object['name'].startswith('player'):
+            objects['PlayerPositions'].append([int(map_object['x']), int(map_object['y'])])
 
     for key, curve in curves.items():
         curve_equations = catmull_rom_equations(curve)
@@ -172,6 +174,7 @@ def modify_map_objects(map_details, tiled_map):
     map_details['Curves'] = objects['Curves']
     map_details['Portals'] = objects['Portals']
     map_details['NPCs'] = objects['NPCs']
+    map_details['PlayerPositions'] = objects['PlayerPositions']
     map_details['Parallax'] = get_parallax_images(tiled_map)
 
 

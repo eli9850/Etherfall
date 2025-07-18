@@ -75,15 +75,7 @@
       "Size": 224
     }
   ],
-  "Walls": [
-    {
-      "Pos": [
-        416,
-        384
-      ],
-      "Size": 160
-    }
-  ],
+  "Walls": [],
   "Curves": {
     "1": [
       [
@@ -397,6 +389,6 @@
     ]
   },
   "Parallax": [],
-  "NPC": [],
-  "NPCs": []
+  "NPCs": [],
+  "PlayerPositions": []
 }
