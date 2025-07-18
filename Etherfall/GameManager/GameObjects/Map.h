@@ -21,7 +21,7 @@ namespace Etherfall {
 	class Map
 	{
 	public:
-		Map(uint32_t map_id, sf::Vector2u window_size, const std::optional<uint32_t>& previous_map);
+		Map(uint32_t map_id, sf::Vector2u window_size, std::shared_ptr<Player> player, const std::optional<uint32_t>& previous_map);
 		uint32_t handle_event(const std::optional<sf::Event>& event);
 		void handle_frame(uint64_t dt);
 		void draw(sf::RenderWindow& window);
@@ -42,7 +42,7 @@ namespace Etherfall {
 		std::vector<Climbable> m_climbables;
 		std::vector<Wall> m_walls;
 		std::vector<NPC> m_npcs;
-		std::unique_ptr<Player> m_player;
+		std::shared_ptr<Player> m_player;
 		sf::View m_view;
 	};
 }

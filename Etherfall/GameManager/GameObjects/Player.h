@@ -54,11 +54,13 @@ namespace Etherfall{
 	class Player
 	{
 	public:
-		Player(uint32_t player_id, const std::optional<sf::Vector2f>& position);
+		Player(uint32_t player_id);
+		void reset_events();
 		void handle_event(const std::optional<sf::Event>& event);
 		void handle_frame(uint64_t dt, const std::vector<std::shared_ptr<Walkable>>& walkables, const std::vector<Climbable>& climbables, const std::vector<Wall>& walls);
 		void draw(sf::RenderWindow& window);
 		sf::Vector2f get_position() const;
+		void set_position(const sf::Vector2f& position);
 		float get_height_size() const;
 		float get_width_size() const;
 	private:
@@ -71,7 +73,6 @@ namespace Etherfall{
 		std::deque<PossibleState> get_next_possible_states_from_jump_right();
 		std::deque<PossibleState> get_next_possible_states_from_jump_left();
 		std::deque<PossibleState> get_next_possible_states_from_climb();
-
 		std::shared_ptr<Walkable> is_on_ground(const std::vector<std::shared_ptr<Walkable>>& walkable);
 		// TODO: I need to find a way to fix the sort issue
 		std::shared_ptr<Walkable> get_next_walkable(uint64_t dt, std::vector<std::shared_ptr<Walkable>> walkable, float distance_x = 0, float distance_y = 0);
@@ -84,7 +85,6 @@ namespace Etherfall{
 		bool handle_next_climb_up_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables);
 		bool handle_next_climb_down_state(uint64_t dt, bool is_right, float distance, const std::vector<std::shared_ptr<Walkable>>& walkable, const std::vector<Climbable>& climbables);
 		bool handle_next_jump_down_state(uint64_t dt, const std::vector<std::shared_ptr<Walkable>>& walkable);
-		
 		void handle_animation();
 		void handle_idle_animation();
 		void handle_run_animation();

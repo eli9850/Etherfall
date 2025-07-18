@@ -6,7 +6,7 @@
 
 namespace Etherfall {
 
-	Player::Player(uint32_t player_id, const std::optional<sf::Vector2f>& position) :
+	Player::Player(uint32_t player_id) :
 		m_player_id(player_id),
 		m_speed(300)
 	{
@@ -19,17 +19,8 @@ namespace Etherfall {
 		m_player_sprite->setScale((m_player_scale));
 		m_current_animation_state = AnimationState::IdleRight;
 		set_animation(Animations::Idle, 0);
-		if (position) {
-			m_player_sprite->setPosition(*position);
-		}
-		else {
-			m_player_sprite->setPosition({ 850, 150 });
-		}
-		
-
 		m_gravity = 1000;
 		m_velocity = 0;
-
 	}
 
 	void Player::initialize_animations(const nlohmann::json& player_sprites) {
@@ -60,6 +51,10 @@ namespace Etherfall {
 				sf::Vector2i(climb.at("width"), climb.at("height")));
 			climb_animations.push_back({ animation_position });
 		}
+	}
+
+	void Player::reset_events() {
+		m_pressed_keys.clear();
 	}
 
 	void Player::handle_event(const std::optional<sf::Event>& event) {
@@ -659,6 +654,10 @@ namespace Etherfall {
 
 	sf::Vector2f Player::get_position() const {
 		return m_player_sprite->getPosition();
+	}
+
+	void Player::set_position(const sf::Vector2f& position) {
+		return m_player_sprite->setPosition(position);
 	}
 
 	float Player::get_height_size() const {

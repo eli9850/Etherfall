@@ -18,9 +18,9 @@ namespace Etherfall {
     }
 
     void GameManager::initialize() {
-        m_window.setFramerateLimit(60);
+        m_window.setVerticalSyncEnabled(true);
         m_window.setKeyRepeatEnabled(false);
-        m_map = std::make_unique<Map>(1, m_window.getSize(), std::nullopt);
+        m_logic = std::make_unique<LogicManager>(m_window);
     }
 
 	void GameManager::run() {
@@ -30,31 +30,26 @@ namespace Etherfall {
             while (event = m_window.pollEvent()) {
                 if (event->is<sf::Event::Closed>()) {
                     m_window.close();
-                }        
-                if (m_window.hasFocus()) {
-                    auto map = m_map->handle_event(event);
-                    if (map != 0) {
-                        m_map = std::make_unique<Map>(map, m_window.getSize(), m_map->get_map_id());
-                    }
-                }            
+                }
+                m_logic->handle_event(m_window, event);
             }
-            auto dt = m_clock.restart().asMicroseconds();
-            
-            m_map->handle_frame(dt);
+            auto dt = m_clock.restart().asMicroseconds(); 
+            m_logic->handle_frame(m_window, dt);
             m_window.clear();
-            m_map->draw(m_window);
+            m_logic->draw(m_window);
             m_window.display();
         }
 	}
 
     void GameManager::run_test() {
 
-        auto t = g_resource_manager->get_player_texture(1);
+        auto t = g_resource_manager->get_portal_texture(2);
+        t.setRepeated(true);
         sf::Sprite a(t);
-        a.setTextureRect({ {162, 2219}, {232, 439} });
+        a.setTextureRect({ {-750, -750}, {3000, 1000} });
         a.setScale({ 0.2f, 0.2f });
-        a.setPosition({ 300, 300 });
-        a.setOrigin({ 116,439 });
+        a.setPosition({ 200, 200 });
+        //a.setOrigin({ 116,439 });
 
         while (m_window.isOpen()) {
             std::optional<sf::Event> event;
@@ -66,6 +61,7 @@ namespace Etherfall {
                     a.setScale({ a.getScale().x * -1, a.getScale().y });
                     std::cout << a.getPosition().x << " | " << a.getPosition().y << std::endl;
                     std::cout << a.getScale().x << " | " << a.getScale().y << std::endl;
+                    a.move({ 5, 0 });
                 }
             }
 

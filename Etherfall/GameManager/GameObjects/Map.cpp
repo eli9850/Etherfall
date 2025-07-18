@@ -1,6 +1,6 @@
 #include "Map.h"
 #include <nlohmann/json.hpp>
-#include <fstream>
+#include <random>
 #include <Windows.h>
 #include "GameManager/ResourceManager/ResourceManager.h"
 #include "Platform.h"
@@ -13,7 +13,15 @@ namespace Etherfall {
 	constexpr float view_x_size = 800;
 	constexpr float view_y_size = 600;
 
-	Map::Map(uint32_t map_id, sf::Vector2u window_size, const std::optional<uint32_t>& previous_map) :
+	sf::Vector2f get_random_position(const nlohmann::json& player_positions) {
+		std::random_device rd;
+		std::mt19937 gen(rd());
+		std::uniform_int_distribution<> distr(0, player_positions.size() - 1);
+		int random_index = distr(gen);
+		return { player_positions[random_index][0], player_positions[random_index][1]};
+	}
+
+	Map::Map(uint32_t map_id, sf::Vector2u window_size, std::shared_ptr<Player> player, const std::optional<uint32_t>& previous_map) :
 		m_map_id(map_id),
 		m_window_size(std::move(window_size)),
 		m_view(sf::FloatRect({ 0, 0 }, { view_x_size, view_y_size }))
@@ -63,7 +71,13 @@ namespace Etherfall {
 		}
 		m_walls.push_back(Wall({ 0,0 }, static_cast<float>(m_background_size.y)));
 		m_walls.push_back(Wall({ static_cast<float>(m_background_size.x),0 }, static_cast<float>(m_background_size.y)));
-		m_player = std::make_unique<Player>(1, player_position);
+		m_player = player;
+		if (player_position) {
+			m_player->set_position(*player_position);
+		}
+		else {
+			m_player->set_position(get_random_position(map_details.at("PlayerPositions")));
+		}
 		
 	}
 
@@ -132,9 +146,9 @@ namespace Etherfall {
 		for (auto& climbable : m_climbables) {
 			climbable.draw(window);
 		}*/
-		for (auto& wall : m_walls) {
+		/*for (auto& wall : m_walls) {
 			wall.draw(window);
-		}
+		}*/
 		m_player->draw(window);
 	}
 
@@ -144,7 +158,7 @@ namespace Etherfall {
 
 	NPC* Map::get_clicked_npc(const sf::RenderWindow& window, const sf::Vector2i& mouse_position) {
 		for (auto& npc : m_npcs) {
-			if (npc.is_clicked(window, mouse_position)) {
+			if (npc.is_clicked(window, mouse_position, m_view)) {
 				return &npc;
 			}
 		}

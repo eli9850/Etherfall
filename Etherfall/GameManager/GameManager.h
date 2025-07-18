@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <filesystem>
 #include <memory>
+#include "LogicManager.h"
 #include "GameObjects/Map.h"
 #include "GameObjects/Player.h"
 
@@ -17,7 +18,7 @@ namespace Etherfall {
 		void initialize();
 	private:
 		sf::RenderWindow m_window; 
-		std::unique_ptr<Map> m_map;
+		std::unique_ptr<LogicManager> m_logic;
 		sf::Clock m_clock;
 	};
 }
